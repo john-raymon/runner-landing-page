@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import 'lite-react-ui/css';
-import RunnerSvg from './../public/runner.svg';
+import RunnerSvg from './../public/runner-pilot.svg';
 import Image from 'next/image';
 
 function MyApp({ Component, pageProps }) {
@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
       <div className="font-base relative min-h-screen lg:max-w-[77.87rem] w-full mx-auto justify-center px-8 xl:px-0">
         <header>
           <div className="w-full my-16">
-            <div className="w-28 lg:w-[9rem] h-auto">
+            <div className="w-28 lg:w-[12rem] h-auto">
               <RunnerSvg className="fill-current text-runner-white"/>
             </div>
           </div>
