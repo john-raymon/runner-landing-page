@@ -27,8 +27,8 @@ export default function Home() {
         <section className="flex-grow my-5 lg:my-0">
           <div className="flex flex-col md:flex-row w-full md:mx-px py-10 space-y-10 md:space-y-0">
             <div className="w-full md:w-1/2 self-center md:-mx-px">
-              <div className="md:px-8 lg:px-24 space-y-5">
-                <p className="text-[1rem] lg:text-[1.2625rem] leading-[1.3rem] lg:leading-[1.6875rem] font-base font-extralight tracking-[0.03em] text-runner-white text-center md:text-left pb-2 sm:pb-4"> 
+              <div className="px-2 md:px-3 lg:px-4 xl:px-24 space-y-5">
+                <p className="sm:h-[4rem] lg:h-[5rem] text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.6875rem] font-base font-extralight tracking-[0.03em] text-runner-white text-center md:text-left pb-4 sm:pb-2"> 
                   We help you add the people your team needs fractionally, when they&apos;re needed.
                 </p>
                 <a href={process.env.NEXT_PUBLIC_COMPANY_TYPEFORM_URL}>
@@ -45,9 +45,11 @@ export default function Home() {
               <HorizDividerSvg />
             </div>
             <div className="w-full md:w-1/2 self-center md:-mx-px">
-              <div className="md:px-8 lg:px-24 space-y-5">
-                <p className="text-[1rem] lg:text-[1.2625rem] leading-[1.3rem] lg:leading-[1.6875rem] tracking-[0.03em] font-base font-extralight text-runner-white text-center md:text-right pb-2 sm:pb-4"> 
-                  Looking to curate your career? We got you.
+              <div className="px-2 md:px-3 lg:px-4 xl:px-24 space-y-5">
+                <p className="sm:h-[4rem] lg:h-[5rem] text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.6875rem] tracking-[0.03em] font-base font-extralight text-runner-white text-center md:text-right pb-4 sm:pb-2"> 
+                  Looking to curate your career?
+                  <br/>
+                  We got you.
                 </p>
                 <a href={process.env.NEXT_PUBLIC_RUNNER_TYPEFORM_URL}>
                   <Button className="md:mt-4 bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.65rem] xl:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
