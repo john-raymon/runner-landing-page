@@ -15,7 +15,7 @@ export default function Home() {
       </Head>
       <main className="relative w-full w-full">
         <section>
-          <div className="w-full px-8 lg:px-0">
+          <div className="w-full">
             <p className="text-[0.5rem] lg:text-sm text-runner-purple tracking-[0.23em] text-center uppercase font-light mb-4 lg:mb-6">
               WHERE PROFESSIONALS RUN
             </p>
@@ -25,7 +25,7 @@ export default function Home() {
             </p>
           </div>
         </section>
-        <section className="flex-grow my-5 lg:my-0 px-8 lg:px-0">
+        <section className="flex-grow my-5 lg:my-0">
           <div className="flex flex-col lg:flex-row w-full lg:mx-px py-10 space-y-10 lg:space-y-0">
             <div className="w-full lg:w-1/2 self-center lg:-mx-px">
               <div className="lg:px-28 space-y-5">
@@ -55,7 +55,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="w-full px-8 lg:px-0">
+        <section className="w-full">
           <div className="text-runner-dark-purple flex items-center relative py-[3.5rem] lg:py-[5.5rem] w-full bg-runner-white box-glow rounded-[4rem] mb-8">
             <div className="space-y-6 lg:space-y-0 w-full px-8 lg:px-36 mx-auto flex flex-col lg:flex-row lg:justify-between lg:items-center z-20">
               <p className="w-full lg:w-4/5 lg:pr-20 text-[1.2rem] lg:text-[2.68rem] tracking-[0.03em] leading-[1.3rem] lg:leading-[2.93rem] font-semibold text-left lg:pr-[2rem]">

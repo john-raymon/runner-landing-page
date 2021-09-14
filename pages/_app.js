@@ -10,9 +10,9 @@ function MyApp({ Component, pageProps }) {
           {/* <img href="/./../public/hero-lines.png" objectFit="cover"/> */}
           <img src="/hero-lines.png" className="object-cover w-full xl:max-h-[619px]" />
       </div>
-      <div className="font-base relative min-h-screen lg:max-w-[77.87rem] w-full mx-auto justify-center xl:px-0">
+      <div className="font-base relative min-h-screen lg:max-w-[77.87rem] w-full mx-auto justify-center px-8 xl:px-0">
         <header>
-          <div className="w-full my-16 px-8 lg:px-0">
+          <div className="w-full my-16">
             <div className="w-28 lg:w-52 h-auto">
               <RunnerSvg className="fill-current text-runner-white"/>
             </div>
