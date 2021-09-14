@@ -32,7 +32,7 @@ export default function Home() {
                   Looking for a fractional operational job? We’ll help you find your perfect role.
                 </p>
                 <a href={process.env.NEXT_PUBLIC_RUNNER_TYPEFORM_URL}>
-                  <Button className="bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.65rem] xl:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
+                  <Button className="md:mt-4 bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.65rem] xl:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
                     join early as a <span className="font-semibold text-runner-dark-purple">runner</span>
                   </Button>
                 </a>
@@ -50,7 +50,7 @@ export default function Home() {
                   We help you add the people your team needs fractionally, when they’re needed.
                 </p>
                 <a href={process.env.NEXT_PUBLIC_COMPANY_TYPEFORM_URL}>
-                  <Button className="bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.65rem] xl:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
+                  <Button className="md:mt-4 bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.65rem] xl:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
                     join early as a <span className="font-semibold text-runner-dark-purple">company</span>
                   </Button>
                 </a>
