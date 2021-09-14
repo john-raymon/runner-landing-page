@@ -13,7 +13,7 @@ export default function Home() {
         <meta name="description" content="Fractional Hiring & Hires" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="relative w-full w-full">
+      <main className="flex flex-col relative w-full w-full">
         <section>
           <div className="w-full">
             <p className="text-[0.5rem] lg:text-sm text-runner-purple tracking-[0.4em] lg:tracking-[0.23em] text-center uppercase font-light mb-4 lg:mb-6">
@@ -54,7 +54,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="w-full">
+        <section className="w-full order-first md:order-last">
           <div className="text-runner-dark-purple flex items-center relative px-[1.7rem] lg:px-0 py-[3.5rem] lg:py-[5.5rem] w-full bg-runner-white box-glow rounded-[4rem] mb-20">
             <div className="space-y-5 md:space-y-0 w-full sm:px-16 md:px-24 lg:px-36 mx-auto flex flex-col md:flex-row md:justify-between md:items-center z-20">
               <p className="w-full sm:w-5/6 lg:w-4/5 lg:pr-20 pr-2 text-[1.7rem] lg:text-[2.68rem] tracking-[0.03em] leading-[1.8rem] lg:leading-[2.93rem] font-semibold text-left md:pr-[2rem]">
