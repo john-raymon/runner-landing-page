@@ -28,7 +28,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row w-full md:mx-px py-10 space-y-10 md:space-y-0">
             <div className="w-full md:w-1/2 self-center md:-mx-px">
               <div className="px-2 md:px-6 xl:px-24 space-y-5">
-                <p className="sm:h-[4rem] lg:h-[5rem] text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.6875rem] font-base font-extralight tracking-[0.03em] text-runner-white text-center md:text-left pb-4 sm:pb-2"> 
+                <p className="sm:h-[4rem] lg:h-[5rem] text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-center md:text-left pb-4 sm:pb-2"> 
                   We help you add the people your team needs fractionally, when they&apos;re needed.
                 </p>
                 <a href={process.env.NEXT_PUBLIC_COMPANY_TYPEFORM_URL}>
@@ -46,7 +46,7 @@ export default function Home() {
             </div>
             <div className="w-full md:w-1/2 self-center md:-mx-px">
               <div className="px-2 md:px-6 xl:px-24 space-y-5">
-                <p className="sm:h-[4rem] lg:h-[5rem] text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.6875rem] tracking-[0.03em] font-base font-extralight text-runner-white text-center md:text-right pb-4 sm:pb-2"> 
+                <p className="sm:h-[4rem] lg:h-[5rem] text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.4rem] tracking-[0.03em] font-base font-extralight text-runner-white text-center md:text-right pb-4 sm:pb-2"> 
                   Looking to curate your career?
                   <br/>
                   We got you.
