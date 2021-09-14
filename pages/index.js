@@ -19,36 +19,35 @@ export default function Home() {
             <p className="text-[0.5rem] lg:text-sm text-runner-purple tracking-[0.4em] lg:tracking-[0.23em] text-center uppercase font-light mb-4 lg:mb-6">
               WHERE PROFESSIONALS RUN
             </p>
-            <p className="w-full sm:w-1/2 lg:w-3/5 hero-text-gradient text-[1.5rem] sm:text-3xl md:text-4xl lg:text-6xl font-medium hero-text-glow uppercase mx-auto text-center tracking-[0.03em] leading-[2rem] lg:leading-tight">
-              {/* LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT. */}
+            <p className="w-full sm:w-1/2 lg:w-3/5 hero-text-gradient text-[1.5rem] sm:text-3xl md:text-4xl lg:text-6xl font-bold hero-text-glow uppercase mx-auto text-center tracking-[0.03em] leading-[2rem] lg:leading-tight">
               Connecting Top Operators And Organizations
             </p>
           </div>
         </section>
         <section className="flex-grow my-5 lg:my-0">
-          <div className="flex flex-col lg:flex-row w-full lg:mx-px py-10 space-y-10 lg:space-y-0">
-            <div className="w-full lg:w-1/2 self-center lg:-mx-px">
-              <div className="lg:px-24 space-y-5">
-                <p className="text-[1rem] lg:text-[1.2625rem] leading-[1.1rem] lg:leading-[1.6875rem] tracking-[0.03em] font-base font-extralight text-runner-white text-center lg:text-left pb-2 sm:pb-4"> 
+          <div className="flex flex-col md:flex-row w-full md:mx-px py-10 space-y-10 md:space-y-0">
+            <div className="w-full md:w-1/2 self-center md:-mx-px">
+              <div className="md:px-8 lg:px-24 space-y-5">
+                <p className="text-[1rem] lg:text-[1.2625rem] leading-[1.3rem] lg:leading-[1.6875rem] tracking-[0.03em] font-base font-extralight text-runner-white text-center md:text-left pb-2 sm:pb-4"> 
                   Looking for a fractional operational job? We’ll help you find your perfect role.
                 </p>
-                <Button className="bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.7rem] xl:text-[0.8rem] !tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
+                <Button className="bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.65rem] xl:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
                   join early as a <span className="font-semibold text-runner-dark-purple">runner</span>
                 </Button>
               </div>
             </div>
-            <div className="mx-1 hidden w-px lg:block">
+            <div className="mx-1 hidden w-px md:block">
               <DividerSvg />
             </div>
-            <div className="my-2 h-px w-full lg:hidden">
+            <div className="my-2 h-px w-full md:hidden">
               <HorizDividerSvg />
             </div>
-            <div className="w-full lg:w-1/2 self-center lg:-mx-px">
-              <div className="lg:px-24 space-y-5">
-                <p className="text-[1rem] lg:text-[1.2625rem] leading-[1.1rem] lg:leading-[1.6875rem] font-base font-extralight tracking-[0.03em] text-runner-white text-center lg:text-right pb-2 sm:pb-4"> 
+            <div className="w-full md:w-1/2 self-center md:-mx-px">
+              <div className="md:px-8 lg:px-24 space-y-5">
+                <p className="text-[1rem] lg:text-[1.2625rem] leading-[1.3rem] lg:leading-[1.6875rem] font-base font-extralight tracking-[0.03em] text-runner-white text-center md:text-right pb-2 sm:pb-4"> 
                   We help you add the people your team needs fractionally, when they’re needed.
                 </p>
-                <Button className="bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.7rem] xl:text-[0.8rem] !tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
+                <Button className="bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.65rem] xl:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
                   join early as a <span className="font-semibold text-runner-dark-purple">company</span>
                 </Button>
               </div>
@@ -56,9 +55,9 @@ export default function Home() {
           </div>
         </section>
         <section className="w-full">
-          <div className="text-runner-dark-purple flex items-center relative px-[1.7rem] lg:px-0 py-[3.5rem] lg:py-[5.5rem] w-full bg-runner-white box-glow rounded-[4rem] mb-8">
-            <div className="space-y-6 md:space-y-0 w-full sm:px-16 md:px-24 lg:px-36 mx-auto flex flex-col md:flex-row md:justify-between md:items-center z-20">
-              <p className="w-full sm:w-5/6 lg:w-4/5 lg:pr-20 text-[1.2rem] sm:text-[1.6rem] lg:text-[2.68rem] tracking-[0.03em] leading-[1.2rem] sm:leading-[1.5rem] lg:leading-[2.93rem] font-semibold text-left lg:pr-[2rem]">
+          <div className="text-runner-dark-purple flex items-center relative px-[1.7rem] lg:px-0 py-[3.5rem] lg:py-[5.5rem] w-full bg-runner-white box-glow rounded-[4rem] mb-20">
+            <div className="space-y-5 md:space-y-0 w-full sm:px-16 md:px-24 lg:px-36 mx-auto flex flex-col md:flex-row md:justify-between md:items-center z-20">
+              <p className="w-full sm:w-5/6 lg:w-4/5 lg:pr-20 pr-2 text-[1.7rem] lg:text-[2.68rem] tracking-[0.03em] leading-[1.8rem] lg:leading-[2.93rem] font-semibold text-left md:pr-[2rem]">
                 Precision and results matter, and we understand that.
               </p>
               <div className="w-4/6 sm:w-2/6 xl:w-1/5">
