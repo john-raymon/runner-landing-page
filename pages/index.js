@@ -17,10 +17,10 @@ export default function Home() {
         <section>
           <div className="w-full">
             <p className="text-[0.5rem] lg:text-sm text-runner-purple tracking-[0.4em] lg:tracking-[0.23em] text-center uppercase font-light mb-4 lg:mb-6">
-              WHERE PROFESSIONALS RUN
+              Run your company... fast.
             </p>
             <p className="w-full sm:w-1/2 lg:w-3/5 hero-text-gradient text-[1.5rem] sm:text-3xl md:text-4xl lg:text-6xl font-bold hero-text-glow uppercase mx-auto text-center tracking-[0.03em] leading-[2rem] lg:leading-tight">
-              Connecting Top Operators And Organizations
+              Connecting underestimated operational talent with the most inclusive startups
             </p>
           </div>
         </section>
@@ -28,12 +28,12 @@ export default function Home() {
           <div className="flex flex-col md:flex-row w-full md:mx-px py-10 space-y-10 md:space-y-0">
             <div className="w-full md:w-1/2 self-center md:-mx-px">
               <div className="md:px-8 lg:px-24 space-y-5">
-                <p className="text-[1rem] lg:text-[1.2625rem] leading-[1.3rem] lg:leading-[1.6875rem] tracking-[0.03em] font-base font-extralight text-runner-white text-center md:text-left pb-2 sm:pb-4"> 
-                  Looking for a fractional operational job? We’ll help you find your perfect role.
+                <p className="text-[1rem] lg:text-[1.2625rem] leading-[1.3rem] lg:leading-[1.6875rem] font-base font-extralight tracking-[0.03em] text-runner-white text-center md:text-left pb-2 sm:pb-4"> 
+                  We help you add the people your team needs fractionally, when they&apos;re needed.
                 </p>
-                <a href={process.env.NEXT_PUBLIC_RUNNER_TYPEFORM_URL}>
+                <a href={process.env.NEXT_PUBLIC_COMPANY_TYPEFORM_URL}>
                   <Button className="md:mt-4 bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.65rem] xl:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
-                    join early as a <span className="font-semibold text-runner-dark-purple">runner</span>
+                    Reserve your <span className="font-semibold text-runner-dark-purple">company&apos;s</span> spot
                   </Button>
                 </a>
               </div>
@@ -46,19 +46,19 @@ export default function Home() {
             </div>
             <div className="w-full md:w-1/2 self-center md:-mx-px">
               <div className="md:px-8 lg:px-24 space-y-5">
-                <p className="text-[1rem] lg:text-[1.2625rem] leading-[1.3rem] lg:leading-[1.6875rem] font-base font-extralight tracking-[0.03em] text-runner-white text-center md:text-right pb-2 sm:pb-4"> 
-                  We help you add the people your team needs fractionally, when they’re needed.
+                <p className="text-[1rem] lg:text-[1.2625rem] leading-[1.3rem] lg:leading-[1.6875rem] tracking-[0.03em] font-base font-extralight text-runner-white text-center md:text-right pb-2 sm:pb-4"> 
+                  Looking to curate your career? We got you.
                 </p>
-                <a href={process.env.NEXT_PUBLIC_COMPANY_TYPEFORM_URL}>
+                <a href={process.env.NEXT_PUBLIC_RUNNER_TYPEFORM_URL}>
                   <Button className="md:mt-4 bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.65rem] xl:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
-                    join early as a <span className="font-semibold text-runner-dark-purple">company</span>
+                    Apply to become a <span className="font-semibold text-runner-dark-purple">runner</span>
                   </Button>
                 </a>
               </div>
             </div>
           </div>
         </section>
-        <section className="w-full order-first md:order-last">
+        <section className="w-full">
           <div className="text-runner-dark-purple flex items-center relative px-[1.7rem] lg:px-0 py-[3.5rem] lg:py-[5.5rem] w-full bg-runner-white box-glow rounded-[4rem] mb-20">
             <div className="space-y-5 md:space-y-0 w-full sm:px-16 md:px-24 lg:px-36 mx-auto flex flex-col md:flex-row md:justify-between md:items-center z-20">
               <p className="w-full sm:w-5/6 lg:w-4/5 lg:pr-20 pr-2 text-[1.7rem] lg:text-[2.68rem] tracking-[0.03em] leading-[1.8rem] lg:leading-[2.93rem] font-semibold text-left md:pr-[2rem]">
