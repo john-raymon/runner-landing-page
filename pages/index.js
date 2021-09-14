@@ -31,9 +31,11 @@ export default function Home() {
                 <p className="text-[1rem] lg:text-[1.2625rem] leading-[1.3rem] lg:leading-[1.6875rem] tracking-[0.03em] font-base font-extralight text-runner-white text-center md:text-left pb-2 sm:pb-4"> 
                   Looking for a fractional operational job? We’ll help you find your perfect role.
                 </p>
-                <Button className="bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.65rem] xl:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
-                  join early as a <span className="font-semibold text-runner-dark-purple">runner</span>
-                </Button>
+                <a href={process.env.NEXT_PUBLIC_RUNNER_TYPEFORM_URL}>
+                  <Button className="bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.65rem] xl:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
+                    join early as a <span className="font-semibold text-runner-dark-purple">runner</span>
+                  </Button>
+                </a>
               </div>
             </div>
             <div className="mx-1 hidden w-px md:block">
@@ -47,9 +49,11 @@ export default function Home() {
                 <p className="text-[1rem] lg:text-[1.2625rem] leading-[1.3rem] lg:leading-[1.6875rem] font-base font-extralight tracking-[0.03em] text-runner-white text-center md:text-right pb-2 sm:pb-4"> 
                   We help you add the people your team needs fractionally, when they’re needed.
                 </p>
-                <Button className="bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.65rem] xl:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
-                  join early as a <span className="font-semibold text-runner-dark-purple">company</span>
-                </Button>
+                <a href={process.env.NEXT_PUBLIC_COMPANY_TYPEFORM_URL}>
+                  <Button className="bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.65rem] xl:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
+                    join early as a <span className="font-semibold text-runner-dark-purple">company</span>
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
