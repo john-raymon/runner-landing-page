@@ -15,16 +15,16 @@ export default function Home() {
       </Head>
       <main className="flex flex-col relative w-full w-full">
         <section>
-          <div className="w-full my-10 md:my-8">
+          <div className="w-full my-10 md:mb-2">
             <h4 className="text-[0.5625rem] lg:text-sm text-runner-purple tracking-[0.4em] lg:tracking-[0.23em] text-center uppercase font-light mb-4 lg:mb-6">
               Run your company...at the speed of you.
             </h4>
-            <h1 className="w-full md:w-3/4 md: lg:w-3/5 hero-text-gradient text-[1.9375rem] sm:text-3xl md:text-[2.5625rem] lg:text-[3.8125rem] font-bold hero-text-glow uppercase mx-auto text-center tracking-[0.03em] leading-[2rem] md:leading-[2.75rem] lg:leading-[4.3125rem]">
+            <h1 className="w-full md:w-[80%] hero-text-gradient text-[1.9375rem] sm:text-3xl md:text-[2.5625rem] lg:text-[3.4125rem] font-bold hero-text-glow uppercase mx-auto text-center tracking-[0.03em] leading-[2rem] md:leading-[2.75rem] lg:leading-[4.3125rem]">
               Connecting outstanding operations talent with the most inclusive startups
             </h1>
           </div>
         </section>
-        <section className="flex-grow my-8 md:mt-4 md:mb-0">
+        <section className="flex-grow my-8 md:mt-2 md:mb-0">
           <div className="flex flex-col md:flex-row w-full md:mx-px py-10 space-y-10 md:space-y-0">
             <div className="w-full md:w-1/2 self-center md:-mx-px">
               <div className="px-2 md:px-6 xl:px-24 space-y-5">
