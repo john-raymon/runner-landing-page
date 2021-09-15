@@ -74,7 +74,7 @@ export default function Home() {
               <p className="text-left">
                 <span className="block font-medium opacity-95 leading-tight">Jessica</span>
                 <span className="block font-light opacity-70 leading-tight">
-                  WorkForm
+                  WorkFrom
                 </span>
               </p>
             </div>
