@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </main>
         <footer className="flex justify-center flex-grow mt-6 mb-14">
-          <a href="https://backstagecapital.com/" target="_blank">
+          <a href="https://backstagecapital.com/" rel="noreferrer" target="_blank">
             <img src="/by-backstage.png" className="w-[6.125rem]" />
           </a>
         </footer>
