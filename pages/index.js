@@ -11,11 +11,11 @@ export default function Home() {
       <Head>
         <title>Runner</title>
         <meta name="description" content="Fractional Hiring & Hires" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <main className="flex flex-col relative w-full w-full">
         <section>
-          <div className="w-full my-10 md:mb-2">
+          <div className="w-full my-8 md:mb-2">
             <h4 className="text-[0.5625rem] lg:text-sm text-runner-purple tracking-[0.4em] lg:tracking-[0.23em] text-center uppercase font-light mb-4 lg:mb-6">
               Run your company...at the speed of you.
             </h4>
@@ -84,7 +84,7 @@ export default function Home() {
             <p className="relative text-runner-white font-light opacity-60 leading-[1.2rem] sm:leading-[1.8rem] tracking-[0.03em] px-[0.7rem] md:px-[3rem]">
               <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] top-[-1rem] left-0 ml-[-18%] sm:ml-[-15%]"/>
               <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] right-0 bottom-[-1rem] mr-[-18%] sm:mr-[-15%] transform rotate-180"/>
-              I worked for Backstage portfolio, Mahmee, for a few weeks in early 2021, for 5 hours per week during Runner&apos;s pilot. I was able to help out during a busy time for the growing company, while working for Backstage full-time.
+              I worked for Backstage portfolio company, Mahmee, for a few weeks in early 2021, for 5 hours per week during Runner&apos;s pilot. I was able to help out during a busy time for the growing company, while working for Backstage full-time.
             </p>
             <div className="flex flex-row justify-center items-center w-full mt-6">
               <p className="text-left">
