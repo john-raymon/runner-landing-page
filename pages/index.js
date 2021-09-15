@@ -95,6 +95,24 @@ export default function Home() {
               </p>
             </div>
           </div>
+
+          <div className="text-center mx-auto w-9/12 sm:w-1/2 text-[0.9rem] sm:text-[1.125rem]">
+            <p className="relative text-runner-white font-light opacity-60 leading-[1.2rem] sm:leading-[1.8rem] tracking-[0.03em] px-[0.7rem] md:px-[3rem]">
+              <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] top-[-1rem] left-0 ml-[-18%] sm:ml-[-15%]"/>
+              <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] right-0 bottom-[-1rem] mr-[-18%] sm:mr-[-15%] transform rotate-180"/>
+              I needed to have food delivered to a filming location for an interview with an entrepreneur in time for the food to be used on camera. The problem was, I knew the timing would be tricky bc I was busy filming at the same time the food needed to get to set. Runner helped me think through the scenario, and I was able to book someone for the day who not only got the food to set, served the food (on camera!), but also took pictures of behind-the scenes for social media.
+            </p>
+            <div className="flex flex-row justify-center items-center w-full mt-6">
+              <p className="text-left">
+                <span className="block font-medium opacity-95 leading-tight">
+                  Kate Sullivan
+                </span>
+                <span className="block font-light opacity-70 leading-tight">
+                  PBS series, To Dine For
+                </span>
+              </p>
+            </div>
+          </div>
         </section>
       </main>
     </div>
