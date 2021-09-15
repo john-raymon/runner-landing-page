@@ -20,6 +20,11 @@ function MyApp({ Component, pageProps }) {
         <main className="w-full">
           <Component {...pageProps} />
         </main>
+        <footer className="flex justify-center flex-grow mt-6 mb-14">
+          <a href="https://backstagecapital.com/" target="_blank">
+            <img src="/by-backstage.png" className="w-[6.125rem]" />
+          </a>
+        </footer>
       </div>
     </div>
   );
