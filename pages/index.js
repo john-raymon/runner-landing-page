@@ -65,7 +65,7 @@ export default function Home() {
             <p className="relative text-runner-white font-light opacity-60 leading-[1.2rem] sm:leading-[1.8rem] tracking-[0.03em] px-[0.7rem] md:px-[3rem]">
               <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] top-[-1rem] left-0 ml-[-18%] sm:ml-[-15%]"/>
               <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] right-0 bottom-[-1rem] mr-[-18%] sm:mr-[-15%] transform rotate-180"/>
-              I found my current job (that I love!) during Runner&apos;s pilot. I was first introduced to Workfrom by Runner in early 2020, started working as a remote contracted Executive Assistant just a few days later, and switched to full-time employee after 3 months. I&apos;m now a marketing/operations lead for the company.
+              I found my current job (that I love!) during Runner&apos;s pilot. I was first introduced to WorkFrom by Runner in early 2020, started working as a remote contracted Executive Assistant just a few days later, and switched to full-time employee after 3 months. I&apos;m now a marketing/operations lead for the company.
             </p>
             <div className="flex flex-row justify-center items-center w-full mt-6">
               <div className="w-12 h-12 rounded-full overflow-hidden mr-2">
