@@ -16,12 +16,12 @@ export default function Home() {
       <main className="flex flex-col relative w-full w-full">
         <section>
           <div className="w-full my-10 md:my-8">
-            <p className="text-[0.5625rem] lg:text-sm text-runner-purple tracking-[0.4em] lg:tracking-[0.23em] text-center uppercase font-light mb-4 lg:mb-6">
+            <h4 className="text-[0.5625rem] lg:text-sm text-runner-purple tracking-[0.4em] lg:tracking-[0.23em] text-center uppercase font-light mb-4 lg:mb-6">
               Run your company...at the speed of you.
-            </p>
-            <p className="w-full md:w-3/4 md: lg:w-3/5 hero-text-gradient text-[1.9375rem] sm:text-3xl md:text-[2.5625rem] lg:text-[3.8125rem] font-bold hero-text-glow uppercase mx-auto text-center tracking-[0.03em] leading-[2rem] md:leading-[2.75rem] lg:leading-[4.3125rem]">
+            </h4>
+            <h1 className="w-full md:w-3/4 md: lg:w-3/5 hero-text-gradient text-[1.9375rem] sm:text-3xl md:text-[2.5625rem] lg:text-[3.8125rem] font-bold hero-text-glow uppercase mx-auto text-center tracking-[0.03em] leading-[2rem] md:leading-[2.75rem] lg:leading-[4.3125rem]">
               Connecting outstanding operations talent with the most inclusive startups
-            </p>
+            </h1>
           </div>
         </section>
         <section className="flex-grow my-8 md:mt-4 md:mb-0">
@@ -32,7 +32,7 @@ export default function Home() {
                   We help you add the people your team needs fractionally, when they&apos;re needed.
                 </p>
                 <a href={process.env.NEXT_PUBLIC_COMPANY_TYPEFORM_URL}>
-                  <Button className="md:mt-4 bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.65rem] xl:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
+                  <Button className="md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
                     Reserve
                   </Button>
                 </a>
@@ -52,11 +52,47 @@ export default function Home() {
                   We got you.
                 </p>
                 <a href={process.env.NEXT_PUBLIC_RUNNER_TYPEFORM_URL}>
-                  <Button className="md:mt-4 bg-gradient-orange font-base !font-normal !border-none text-[0.6rem] sm:text-[0.65rem] xl:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
+                  <Button className="md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
                     Apply
                   </Button>
                 </a>
               </div>
+            </div>
+          </div>
+        </section>
+        <section className="text-runner-white font-base mb-16 space-y-[4rem] text-center w-full w-full mx-auto px-2 md:px-6 xl:px-24">
+          <div className="text-center mx-auto w-9/12 sm:w-1/2 text-[0.9rem] sm:text-[1.125rem]">
+            <p className="relative text-runner-white font-light opacity-60 leading-[1.2rem] sm:leading-[1.8rem] tracking-[0.03em] px-[0.7rem] md:px-[3rem]">
+              <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] top-[-1rem] left-0 ml-[-18%] sm:ml-[-15%]"/>
+              <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] right-0 bottom-[-1rem] mr-[-18%] sm:mr-[-15%] transform rotate-180"/>
+              I found my current job (that I love!) during Runner's pilot. I was first introduced to Workfrom by Runner in early 2020, started working as a remote contracted Executive Assistant just a few days later, and switched to full-time employee after 3 months. I'm now a marketing/operations lead for the company.
+            </p>
+            <div className="flex flex-row justify-center items-center w-full mt-6">
+              <div className="w-12 h-12 rounded-full overflow-hidden mr-2">
+                <img src="/jessica-avatar.jpeg" className="object-cover" />
+              </div>
+              <p className="text-left">
+                <span className="block font-medium opacity-95 leading-tight">Jessica</span>
+                <span className="block font-light opacity-70 leading-tight">
+                  WorkForm
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div className="text-center mx-auto w-9/12 sm:w-1/2 text-[0.9rem] sm:text-[1.125rem]">
+            <p className="relative text-runner-white font-light opacity-60 leading-[1.2rem] sm:leading-[1.8rem] tracking-[0.03em] px-[0.7rem] md:px-[3rem]">
+              <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] top-[-1rem] left-0 ml-[-18%] sm:ml-[-15%]"/>
+              <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] right-0 bottom-[-1rem] mr-[-18%] sm:mr-[-15%] transform rotate-180"/>
+              I worked for Backstage portfolio, Mahmee, for a few weeks in early 2021, for 5 hours per week during Runner's pilot. I was able to help out during a busy time for the growing company, while working for Backstage full-time.
+            </p>
+            <div className="flex flex-row justify-center items-center w-full mt-6">
+              <p className="text-left">
+                <span className="block font-medium opacity-95 leading-tight">Operations team member</span>
+                <span className="block font-light opacity-70 leading-tight">
+                  Backstage Capital
+                </span>
+              </p>
             </div>
           </div>
         </section>
