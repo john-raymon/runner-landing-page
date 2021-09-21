@@ -20,7 +20,10 @@ function MyApp({ Component, pageProps }) {
         <main className="w-full">
           <Component {...pageProps} />
         </main>
-        <footer className="flex justify-center flex-grow mt-6 mb-14">
+        <footer className="flex flex-col items-center justify-center flex-grow mt-8 mb-14">
+          <p className="font-base text-sm py-1 text-runner-white tracking-wider opacity-75">
+            This landing page was built by a Runner :)
+          </p>
           <a href="https://backstagecapital.com/" rel="noreferrer" target="_blank">
             <img src="/by-backstage.png" className="w-[6.125rem]" />
           </a>
