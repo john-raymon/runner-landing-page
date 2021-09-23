@@ -65,6 +65,26 @@ export default function Home() {
             <p className="relative text-runner-white font-light opacity-60 leading-[1.2rem] sm:leading-[1.8rem] tracking-[0.03em] px-[0.7rem] md:px-[3rem]">
               <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] top-[-1rem] left-0 ml-[-18%] sm:ml-[-15%]"/>
               <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] right-0 bottom-[-1rem] mr-[-18%] sm:mr-[-15%] transform rotate-180"/>
+              You. Are. Fast! I didn&apos;t expect you to have someone so quickly. This is a seamless process 🔥
+            </p>
+            <div className="flex flex-row justify-center items-center w-full mt-6">
+              <div className="w-12 h-12 rounded-full overflow-hidden mr-2">
+                <img src="/harold-hughes-pic.jpg" className="object-cover" />
+              </div>
+              <p className="text-left">
+                <span className="block font-medium opacity-95 leading-tight">Harold Hughes</span>
+                <span className="block font-light opacity-70 leading-tight">
+                  CEO, Bandwagon (customer)
+                </span>
+              </p>
+            </div>
+          </div>
+          
+          
+          <div className="text-center mx-auto w-9/12 sm:w-1/2 text-[0.9rem] sm:text-[1.125rem]">
+            <p className="relative text-runner-white font-light opacity-60 leading-[1.2rem] sm:leading-[1.8rem] tracking-[0.03em] px-[0.7rem] md:px-[3rem]">
+              <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] top-[-1rem] left-0 ml-[-18%] sm:ml-[-15%]"/>
+              <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] right-0 bottom-[-1rem] mr-[-18%] sm:mr-[-15%] transform rotate-180"/>
               I found my current job (that I love!) during Runner&apos;s pilot. I was first introduced to WorkFrom by Runner in early 2020, started working as a remote contracted Executive Assistant just a few days later, and switched to full-time employee after 3 months. I&apos;m now a marketing/operations lead for the company.
             </p>
             <div className="flex flex-row justify-center items-center w-full mt-6">
