@@ -77,7 +77,7 @@ export default function Home() {
               <p className="flex-shrink-0 text-left">
                 <span className="block font-medium opacity-95 leading-tight">Harold Hughes</span>
                 <span className="block font-light opacity-70 leading-tight">
-                  CEO, Bandwagon (Runner)
+                  CEO, Bandwagon (customer)
                 </span>
               </p>
             </div>
