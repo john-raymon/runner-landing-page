@@ -67,14 +67,17 @@ export default function Home() {
               <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] right-0 bottom-[-1rem] mr-[-18%] sm:mr-[-15%] transform rotate-180"/>
               You. Are. Fast! I didn&apos;t expect you to have someone so quickly. This is a seamless process 🔥
             </p>
-            <div className="flex flex-row justify-center items-center w-full mt-6">
-              <div className="w-12 h-12 rounded-full overflow-hidden mr-2">
-                <img src="/harold-hughes-pic.jpg" className="object-cover" />
+            <div className="flex flex-row justify-center items-center mt-6">
+              <div>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 max-height-[3rem] rounded-full overflow-hidden mr-3">
+                  <img src="/harold-hughes-pic.jpg" className="object-cover" />
+                </div>
               </div>
-              <p className="text-left">
+
+              <p className="flex-shrink-0 text-left">
                 <span className="block font-medium opacity-95 leading-tight">Harold Hughes</span>
                 <span className="block font-light opacity-70 leading-tight">
-                  CEO, Bandwagon (Runner)
+                  CEO, Bandwagon (customer)
                 </span>
               </p>
             </div>
@@ -87,11 +90,13 @@ export default function Home() {
               <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] right-0 bottom-[-1rem] mr-[-18%] sm:mr-[-15%] transform rotate-180"/>
               I found my current job (that I love!) during Runner&apos;s pilot. I was first introduced to WorkFrom by Runner in early 2020, started working as a remote contracted Executive Assistant just a few days later, and switched to full-time employee after 3 months. I&apos;m now a marketing/operations lead for the company.
             </p>
-            <div className="flex flex-row justify-center items-center w-full mt-6">
-              <div className="w-12 h-12 rounded-full overflow-hidden mr-2">
-                <img src="/jessica-avatar.jpeg" className="object-cover" />
+            <div className="flex flex-row justify-center items-center mt-6">
+              <div>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden mr-3">
+                  <img src="/jessica-avatar.jpeg" className="object-cover" />
+                </div>
               </div>
-              <p className="text-left">
+              <p className="flex-grow-0 text-left">
                 <span className="block font-medium opacity-95 leading-tight">Jessica</span>
                 <span className="block font-light opacity-70 leading-tight">
                   WorkFrom (Runner)

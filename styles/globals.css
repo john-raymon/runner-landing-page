@@ -5,7 +5,7 @@
 @tailwind base;
 
 html, body {
-  @apply bg-runner-black min-h-screen;
+  @apply bg-runner-black min-h-screen font-base;
 }
 
 @tailwind components;
