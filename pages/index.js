@@ -82,6 +82,20 @@ export default function Home() {
               </p>
             </div>
           </div>
+
+
+          <div className="text-center mx-auto w-9/12 sm:w-1/2 text-[0.9rem] sm:text-[1.125rem]">
+            <p className="relative text-runner-white font-light opacity-60 leading-[1.2rem] sm:leading-[1.8rem] tracking-[0.03em] px-[0.7rem] md:px-[3rem]">
+              <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] top-[-1rem] left-0 ml-[-18%] sm:ml-[-15%]"/>
+              <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] right-0 bottom-[-1rem] mr-[-18%] sm:mr-[-15%] transform rotate-180"/>
+              It was great to chat with you. Your interviewing style made me feel I belong. 🙏
+            </p>
+            <div className="flex flex-row justify-center items-center mt-6">
+              <p className="flex-shrink-0 text-left">
+                <span className="block font-medium opacity-95 leading-tight">potential Runner</span>
+              </p>
+            </div>
+          </div>
           
           
           <div className="text-center mx-auto w-9/12 sm:w-1/2 text-[0.9rem] sm:text-[1.125rem]">
