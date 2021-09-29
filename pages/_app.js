@@ -10,8 +10,8 @@ function MyApp({ Component, pageProps }) {
       <div className="absolute md:h-auto top-0 left-0 w-full">
           <img src="/hero-lines.png" className="object-cover h-[43rem] opacity-80 w-full" />
       </div>
-      <header className="px-10 pb-10 pt-14 md:px-14 xl:px-24 sticky top-0 transparent-background-shadow z-20">
-        <div className="w-full flex justify-between items-center">
+      <header className="sticky top-0 transparent-background-shadow z-20">
+        <div className="w-full flex justify-between items-center lg:max-w-[77.87rem] mx-auto px-10 pb-10 pt-14 md:px-14 xl:px-24">
           <Link href="/">
             <a className="w-[7.25rem] lg:w-[12rem] h-auto">
               <RunnerSvg className="fill-current text-runner-white"/>
