@@ -10,7 +10,7 @@ export default function WhyPage() {
         <link rel="icon" href="/favicon.png" />
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </Head>
-      <main className="flex relative w-full w-full mt-14 md:mt-10 lg:mt-16">
+      <main className="flex relative w-full w-full mt-14 md:mt-12 lg:mt-24">
         <div className="w-full flex flex-col md:flex-row px-0 md:px-10 lg:px-20 items-center md:items-start">
           <div className="order-last flex mx-auto flex-col w-full md:w-[40%] lg:w-[35%] max-w-[34.375rem] md:max-w-full max-h-[full]">
               <div className="w-full mx-auto md:mt-[-10px]">
@@ -23,12 +23,12 @@ export default function WhyPage() {
                 <blockquote className="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">Agreed! That’s why you should <a href="https://twitter.com/hirerunner?ref_src=twsrc%5Etfw">@hirerunner</a> 💜 <a href="https://t.co/ocQhVn5hTz">https://t.co/ocQhVn5hTz</a></p>&mdash; Arlan 👊🏾 (@ArlanWasHere) <a href="https://twitter.com/ArlanWasHere/status/1443037219984343040?ref_src=twsrc%5Etfw">September 29, 2021</a></blockquote>
               </div>
           </div>
-          <div className="relative max-w-[34.375rem] md:max-w-full w-[100%] px-2 sm:px-0 md:w-[60%] lg:w-[65%] md:pr-[1.25rem] mt-[-2rem] md:mt-0 h-[50vh] md:h-[100vh] md:sticky top-0">
+          <div className="relative max-w-[34.375rem] md:max-w-full w-[100%] px-2 sm:px-0 md:w-[60%] lg:w-[65%] md:pr-[1.25rem] mt-[-2rem] md:mt-0 h-[50vh] md:h-[70vh] md:sticky top-[10rem]">
             <div className="w-[6.5rem] md:w-[9rem] lg:w-[14rem] absolute left-0 top-0 mt-[-3rem] md:mt-[-4rem] lg:mt-[-6.5rem] ml-[-1.8rem] sm:ml-[-3rem] md:ml-[-4rem] lg:ml-[-6.5rem] z-10">
               <WhyRunnerSvg className="transform rotate-90" width="100%" height="100%" />
             </div>
             <div className="flex items-center justify-center w-full h-full rounded-lg video-gradient-background">
-              <video autoPlay controls loop poster="/runner-why-image.jpeg" className="rounded-lg w-full h-[100%] md:max-h-[50rem]">
+              <video autoPlay controls loop poster="/runner-why-image.jpeg" className="rounded-lg w-full h-[100%]">
                 <source src="/runner-why-video.mp4" type="video/mp4"/>
                 <source src="/runner-why-video.webm" type="video/webm"/>
                 <source src="/runner-why-video.ogv" type="video/ogg"/>
