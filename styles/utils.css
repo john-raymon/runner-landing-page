@@ -30,3 +30,7 @@
   height: 120%;
   background: linear-gradient(to bottom, #000000d9, rgba(0, 0, 0, 0));
 }
+
+.video-gradient-background {
+  background: linear-gradient(192.55deg, rgb(97 115 244 / 54%) 4%, rgb(243 94 62 / 89%) 45.67%, rgb(97 115 244 / 2%) 79.73%, rgb(0 0 0 / 0%) 95.62%);
+}

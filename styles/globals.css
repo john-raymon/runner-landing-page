@@ -8,6 +8,12 @@ html, body {
   @apply bg-runner-black min-h-screen font-base;
 }
 
+.twitter-tweet, .twitter-tweet iframe *, .twitter-tweet * {
+  width: 100% !important;
+  /* min-width: 100% !important;
+  max-width: 100% !important; */
+}
+
 @tailwind components;
 
 
