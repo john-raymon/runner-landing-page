@@ -16,6 +16,10 @@
     0px -8px 140px rgb(59 46 64 / 25%), 0px -5px 130px rgb(97 115 244 / 30%);
 }
 
+.box-glow-2 {
+  box-shadow: 0px -3px 45px rgb(243 94 62 / 17%), 0px 4px 148px rgb(59 27 72 / 39%), 0px -55px 100px rgb(97 115 244 / 20%);
+}
+
 .hero-text-gradient {
   @apply text-transparent;
   background-clip: text;
