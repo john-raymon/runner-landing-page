@@ -28,7 +28,7 @@ export default function WhyPage() {
               <WhyRunnerSvg className="transform rotate-90" width="100%" height="100%" />
             </div>
             <div className="flex items-center justify-center w-full h-full rounded-lg bg-runner-black py-12 md:py-10 box-glow-2 bg-opacity-50">
-              <video autoPlay controls loop poster="/runner-why-image.jpeg" className="rounded-lg w-full h-[100%]">
+              <video autoPlay controls loop playsinline poster="/runner-why-image.jpeg" className="rounded-lg w-full h-[100%]">
                 <source src="/runner-why-video.mp4" type="video/mp4"/>
                 <source src="/runner-why-video.webm" type="video/webm"/>
                 <source src="/runner-why-video.ogv" type="video/ogg"/>
