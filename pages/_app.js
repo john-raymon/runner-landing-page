@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
       <header className="sticky top-0 transparent-background-shadow z-20">
         <div className="w-full flex justify-between items-center lg:max-w-[77.87rem] mx-auto px-10 pb-10 pt-14 md:px-14 xl:px-24">
           <Link href="/">
-            <a className="w-[7.25rem] lg:w-[12rem] h-auto">
+            <a className="w-[7.25rem] lg:w-[10rem] h-auto">
               <RunnerSvg className="fill-current text-runner-white"/>
             </a>
           </Link>
