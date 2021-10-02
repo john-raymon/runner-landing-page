@@ -14,6 +14,9 @@ export default function WhyPage() {
         <div className="w-full flex flex-col md:flex-row px-0 md:px-10 lg:px-20 items-center md:items-start">
           <div className="order-last flex mx-auto flex-col w-full md:w-[40%] lg:w-[35%] max-w-[34.375rem] md:max-w-full max-h-[full] z-10">
               <div className="w-full mx-auto md:mt-[-10px]">
+                <blockquote className="twitter-tweet" data-conversation="none" data-theme="dark"><p lang="en" dir="ltr">... in that 15 min intake your team was graceful, helpful, and at the end when I said: let me gather my thoughts &amp; write out my needs in an email they replied &quot;Oh no the last thing you need is to take another action for yourself. We&#39;ve got you.&quot;<a href="https://twitter.com/hirerunner?ref_src=twsrc%5Etfw">@hirerunner</a> is going to be HUGE.</p>&mdash; Sara Lobkovich, J.D. (@saralobkovich) <a href="https://twitter.com/saralobkovich/status/1444374019608748032?ref_src=twsrc%5Etfw">October 2, 2021</a></blockquote>
+              </div>
+              <div>
                 <blockquote className="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">Exactly why <a href="https://twitter.com/hirerunner?ref_src=twsrc%5Etfw">@hirerunner</a> was created💜 Head on over… <a href="https://t.co/WRcZNstn3j">https://t.co/WRcZNstn3j</a></p>&mdash; HireRunner (@hirerunner) <a href="https://twitter.com/hirerunner/status/1442342286386348033?ref_src=twsrc%5Etfw">September 27, 2021</a></blockquote>
               </div>
               <div>
