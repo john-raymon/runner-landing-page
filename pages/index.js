@@ -65,6 +65,31 @@ export default function Home() {
             <p className="relative text-runner-white font-light opacity-60 leading-[1.2rem] sm:leading-[1.8rem] tracking-[0.03em] px-[0.7rem] md:px-[3rem]">
               <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] top-[-1rem] left-0 ml-[-18%] sm:ml-[-15%]"/>
               <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] right-0 bottom-[-1rem] mr-[-18%] sm:mr-[-15%] transform rotate-180"/>
+              [redacted Runner name] and I are off to a great start. Her insight into how to streamline operations for both our doctor onboarding and the business in general has been superb already. 
+              She is more than capable with self-directed working as well as digital face-to-face meetings. Thank you for this connection.
+            </p>
+            <div className="flex flex-row justify-center items-center mt-6">
+              <div>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 max-height-[3rem] rounded-full overflow-hidden mr-3">
+                  <img src="/dr-joy-pic.jpg" className="object-cover" />
+                </div>
+              </div>
+
+              <p className="flex-shrink-0 text-left">
+                <span className="block font-medium opacity-95 leading-tight">
+                  Dr. Joy A. Cooper
+                </span>
+                <span className="block font-light opacity-70 leading-tight">
+                  ourculturecare.com
+                </span>
+              </p>
+            </div>
+          </div>
+         
+         <div className="text-center mx-auto w-9/12 sm:w-1/2 text-[0.9rem] sm:text-[1.125rem]">
+            <p className="relative text-runner-white font-light opacity-60 leading-[1.2rem] sm:leading-[1.8rem] tracking-[0.03em] px-[0.7rem] md:px-[3rem]">
+              <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] top-[-1rem] left-0 ml-[-18%] sm:ml-[-15%]"/>
+              <img src="/quotation-marks.png" className="absolute w-[17%] md:w-[16%] right-0 bottom-[-1rem] mr-[-18%] sm:mr-[-15%] transform rotate-180"/>
               You. Are. Fast! I didn&apos;t expect you to have someone so quickly. This is a seamless process 🔥
             </p>
             <div className="flex flex-row justify-center items-center mt-6">
