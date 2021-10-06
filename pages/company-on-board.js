@@ -6,7 +6,38 @@ import DownTriangleSvg from './../public/down-triangle.svg';
 import GradientCircleSvg from './../public/gradient-circle.svg';
 import WhiteCircleSvg from './../public/white-circle.svg';
 import DividerSvg from './../public/vertical-divider.svg';
+import PlanetSvg from './../public/planet.svg';
 import head from 'next/head';
+import { loadStripe } from "@stripe/stripe-js";
+
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  // https://stackoverflow.com/a/16233919/8320709
+  // These options are needed to round to whole numbers if that's what you want.
+  //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+  //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+});
+
+function PaginationButton({step, currentActiveStep, prevStep, nextStep}) {
+  // by default disables pagination if not next or prev step, to prevent skipping beyond next step
+  const isActive = step === +currentActiveStep;
+  const isNextStep = !isActive && step === +currentActiveStep + 1;
+  const isPrevStep = !isActive && step === +currentActiveStep - 1;
+  return (
+    <button 
+      disabled={!isNextStep && !isPrevStep && !isActive} 
+      onClick={(e) => (isActive ? null : isNextStep ? nextStep(e, currentActiveStep) : (isPrevStep ? prevStep(e, currentActiveStep) : null) )} 
+      className="w-[0.7rem] h-auto cursor-pointer disabled:opacity-[0.20]">
+      {
+        isActive ?
+        <GradientCircleSvg />
+        :
+        <WhiteCircleSvg />
+      }
+    </button>
+  )
+}
 
 export default function WhyPage() {
   const router = useRouter();
@@ -15,9 +46,12 @@ export default function WhyPage() {
   const [decodedEmail, setDecodedEmail] = useState('');
   const [headcount, setHeadcount] = useState('');
   const [selectWrapperFocus, setSelectWrapperFocus] = useState(false);
-  const [disableNext, setDisableNext] = useState(true);
-
+  const [disableNext, setDisableNext] = useState(false);
+  const stripeRef = useRef(null);
+  const stripeCardRef = useRef(null);
   const selectInputRef = useRef(null);
+  const [totalCosts, setTotalCosts] = useState(0); 
+  const [totalCostsFormatted, setTotalCostsFormatted] = useState('');
 
   const emailRegEx = /\S+@\S+\.\S+/;
   const headcounts = Array(101)
@@ -30,6 +64,43 @@ export default function WhyPage() {
   function handleHeadcountChange(e) {
     setHeadcount(e.target.value);
   }
+
+  // set up Stripe.js card element
+  function setUpStripeElementCard() {
+    loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY).then(stripe => {
+      stripeRef.current = stripe;
+      // Create an instance of Elements
+      const elements = stripeRef.current.elements();
+      // Custom styling can be passed to options when creating an Element.
+      // (Note that this demo uses a wider set of styles than the guide below.)
+      const style = {
+        base: {
+          color: '#FCEFED',
+          fontWeight: '300',
+          fontSize: '18px',
+          letterSpacing: '0.02em',
+          '::placeholder': {
+            color: '#FCEFED'
+          },
+          textTransform: 'capitalize',
+        },
+        invalid: {
+          color: '#fa755a',
+          iconColor: '#FCEFED'
+        }
+      };
+      // Create an instance of the card Element
+      stripeCardRef.current = elements.create("card", { style });
+      // Add an instance of the card Element into the `card-element` <div>
+      stripeCardRef.current.mount("#card-element");
+    });
+  }
+
+  useEffect(() => {
+    if (currentStep === '2') {
+      setUpStripeElementCard();
+    }
+  }, [currentStep])
 
   useEffect(() => {
     if (!headcount) {
@@ -59,13 +130,24 @@ export default function WhyPage() {
     }
   }, [decodedEmail])
 
-  function nextStep(currentStep) {
+  function nextStep(e, currentStep) {
+    e.preventDefault();
     if (currentStep === '1') {
       setDisableNext(true);
       if (headcount && headcount !== '101') {
-        setCurrentStep('2');
+        // calc price and update state
+        const totalCosts = +headcount <= 3 ? 600 : (+headcount * 200);
+        setTotalCosts(totalCosts);
+        setTotalCostsFormatted(formatter.format(totalCosts));
+        setCurrentStep(+currentStep + 1 + '');
+        setDisableNext(false);
       }
     }
+  }
+
+  function prevStep(e, currentStep) {
+    e.preventDefault();
+    setCurrentStep(+currentStep - 1 < 1 ? '1' : +currentStep - 1 + '');
   }
     
   const allHeadcountOptions = Object.keys(headcounts).map((headcount) => {
@@ -75,6 +157,7 @@ export default function WhyPage() {
       </option>
     )
   });
+
 
   return (
     <div className="w-full px-10 md:px-14 xl:px-24 text-runner-white font-base mt-16 mb-24">
@@ -95,7 +178,7 @@ export default function WhyPage() {
                   return (
                     <div className="flex w-full">
                       <div className="w-[70%] pr-[4rem] space-y-12 mr-[-0.5px]">
-                        <h1 className="font-base w-full md:w-[80%] text-[3rem] font-semibold capitalize text-left tracking-[0.03em] leading-[3rem]">
+                        <h1 className="font-base w-full text-[3rem] font-semibold capitalize text-left tracking-[0.03em] leading-[3rem]">
                           Finish registering
                         </h1>
 
@@ -104,16 +187,16 @@ export default function WhyPage() {
                             <label className="text-runner-white text-[1.375rem] leading-[0.75rem] tracking-[0.02em] font-medium">
                               How many employees do you currently have?
                               <p className="font-light tracking-[0.06em] text-[0.9rem] opacity-[0.8] leading-[0.75rem] mt-3">
-                                Including yourself, full-time, part-time and contracts
+                                Including yourself, full-time, and part-time employees.
                               </p>
                             </label>
                             <button 
                               tabIndex="-1"
                               type="button" 
                               onFocus={() => { selectInputRef.current.focus(); setSelectWrapperFocus(true); }} 
-                              className={`${selectWrapperFocus ? 'scale-105 border-opacity-[0.3] border-runner-white' : 'scale-100 border-opacity-[0] border-transparent'} border-[0.1rem] transform transition duration-300 ease-in-out hover:scale-105 base-select relative flex justify-between rounded-[1.5rem] bg-runner-dark-purple px-[2.5rem] py-[1.875rem] w-full cursor-pointer`}
+                              className={`${selectWrapperFocus ? 'scale-105 border-opacity-[0.2] border-runner-white' : 'scale-100 border-opacity-[0] border-transparent'} border-[0.1rem] transform transition duration-300 ease-in-out hover:scale-105 base-select relative flex justify-between rounded-[1.5rem] bg-[#372E40] bg-opacity-[0.6] px-[2.5rem] py-[1.875rem] w-full cursor-pointer`}
                             >
-                              <p className="text-[1rem] opacity-[0.5] tracking-[0.06rem] font-light leading-[0.75rem]">
+                              <p className="text-[1rem] text-runner-white text-opacity-[0.70] tracking-[0.06rem] font-light leading-[0.75rem]">
                                 { headcounts[headcount] || 'Select a number of employees' }
                               </p>
                               <div className="w-[1rem] h-auto">
@@ -138,31 +221,17 @@ export default function WhyPage() {
                         
                         <div className="w-full flex justify-between items-center">
                           <div className="flex space-x-8">
-                            <div className="w-[0.7rem] h-auto cursor-pointer">
-                              {
-                                currentStep === '1' ?
-                                <GradientCircleSvg />
-                                :
-                                <WhiteCircleSvg />
-                              }
-                            </div>
-                            <div className="w-[0.7rem] h-auto cursor-pointer">
-                              {
-                                currentStep === '2' ?
-                                <GradientCircleSvg />
-                                :
-                                <WhiteCircleSvg />
-                              }
-                            </div>
+                            {
+                              Array(2).fill('').map((_, i) => <PaginationButton step={i + 1} currentActiveStep={currentStep} prevStep={prevStep} nextStep={nextStep} key={i+'_pagination'} />)
+                            }
                           </div>
                           <Button 
-                            onClick={() => nextStep(currentStep)}
-                            tabIndex="0"
+                            onClick={(e) => nextStep(e, currentStep)}
                             disabled={headcount === '101' || !!disableNext}
-                            className={`${(headcount !== '101' || !disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} !max-w-[20rem] !w-full md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
+                            className={`${(headcount !== '101' || !disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} button-glow transition duration-300 hover:scale-105 active:scale-100 focus:scale-105 !max-w-[20rem] !w-full bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
                             type="button"
                           >
-                            Continue to payment
+                            Continue
                           </Button>
                         </div>
                       </div>
@@ -173,6 +242,85 @@ export default function WhyPage() {
                         <p className="text-wrap sm:h-[4rem] lg:h-[5rem] text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-right"> 
                           More than 100 current employees?
                           <a className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
+                            <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
+                          </a>
+                        </p>
+                      </div>
+                    </div>
+                  )
+                case '2':
+                  return (
+                    <div className="flex w-full text-white-runner">
+                      <div className="w-[70%] pr-[4rem] space-y-[3rem] mr-[-0.5px] text-white-runner">
+                        <h1 className="text-runner-white font-base w-full text-[3.5rem] font-bold capitalize text-left leading-[4.0625rem]">
+                          Membership Checkout
+                        </h1>
+                        <h4 className="text-runner-white !mt-[0.75rem] w-full text-[1.3rem] font-light capitalize text-left tracking-[0.03em] leading-[1.7rem] text-opacity-[0.75]">
+                          Runner’s membership cost $200 per current employee per year with a $600 minimum. 
+                        </h4>
+
+                        <div className="checkout-inner-container checkout-inner-container--multicolor-border flex flex-col items-center px-[3rem] py-[4rem]">
+                          <div className="flex flex-col space-y-8 w-full">
+                            <p className="text-runner-white text-[1.075rem] leading-[0.75rem] tracking-[0.02em] font-medium text-opacity-[0.8]">
+                              Payment Summary
+                            </p>
+                            <div className="flex justify-between rounded-[0.875rem] p-[2.21875rem] w-full  bg-opacity-[0.2]">
+                              <div className="w-[2rem] h-auto">
+                                <PlanetSvg width="100%" />  
+                              </div>
+                              <div className="flex font-light items-center justify-between w-full pl-[1.59375rem] text-[1.125rem] tracking-[0.02em] leading-[0.75rem] text-opacity-[0.9]">
+                                <p>
+                                  {headcounts[headcount]}
+                                </p>
+                                <p>
+                                  {totalCostsFormatted} USD / per year
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="flex flex-col space-y-8 w-full mt-[3.5rem]">
+                            <p className="text-runner-white text-[1.075rem] leading-[0.75rem] tracking-[0.02em] font-medium text-opacity-[0.8]">
+                              Payment Method
+                            </p>
+                            <div className="w-full">
+                              <div className="rounded-[0.875rem] bg-[#372E40] bg-opacity-[0.2] text-[1.125rem] p-[2.21875rem]">
+                                <div id="card-element"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="w-full flex justify-between text-runner-white items-center w-full text-[1.3rem] font-light capitalize text-left tracking-[0.03em] leading-[1.7rem]">
+                          <p className="text-runner-white text-opacity-[0.85]">Total Costs:</p>
+                          <p className="font-normal">{totalCostsFormatted }</p>
+                        </div>
+
+
+                        <div className="w-full flex justify-between items-center">
+                          <div className="flex space-x-8">
+                            {
+                              Array(2).fill('').map((_, i) => <PaginationButton step={i + 1} currentActiveStep={currentStep} prevStep={prevStep} nextStep={nextStep} key={i+'_pagination'} />)
+                            }
+                          </div>
+                          <Button 
+                            onClick={(e) => nextStep(e, currentStep)}
+                            tabIndex="0"
+                            disabled={headcount === '101' || disableNext}
+                            className={`${(headcount !== '101' || !disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} button-glow transition duration-300 hover:scale-105 active:scale-100 focus:scale-105 !max-w-[20rem] !w-full md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
+                            type="button"
+                          >
+                            Proceed to pay
+                          </Button>
+                        </div>
+                      </div>
+                      <div className={`transition ease-in-out duration-300 relative h-[100%] w-[0.5px] flex-stretch self-center`}>
+                        <DividerSvg height="100%" />
+                      </div>
+                      <div className={`transition ease-in-out duration-700 flex items-center ml-[-0.5px] max-w-[30%] flex-grow pl-[4rem]`}>
+                        <p className="text-wrap sm:h-[4rem] lg:h-[5rem] text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-right"> 
+                          Have any questions? Set up call with us before making a purchase.
+                          <a href={process.env.NEXT_PUBLIC_CALENDLY_LINK} className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
                             <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
                           </a>
                         </p>
