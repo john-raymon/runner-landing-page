@@ -28,7 +28,7 @@ function PaginationButton({step, currentActiveStep, prevStep, nextStep}) {
     <button 
       disabled={!isNextStep && !isPrevStep && !isActive} 
       onClick={(e) => (isActive ? null : isNextStep ? nextStep(e, currentActiveStep) : (isPrevStep ? prevStep(e, currentActiveStep) : null) )} 
-      className="w-[0.7rem] h-auto cursor-pointer disabled:opacity-[0.20]">
+      className={`w-[0.7rem] h-auto cursor-pointer disabled:opacity-[0.20] ${isActive ? 'transform scale-[1.75]' : ''}`}>
       {
         isActive ?
         <GradientCircleSvg />
@@ -52,6 +52,7 @@ export default function WhyPage() {
   const selectInputRef = useRef(null);
   const [totalCosts, setTotalCosts] = useState(0); 
   const [totalCostsFormatted, setTotalCostsFormatted] = useState('');
+  const [charged, setCharged] = useState(false);
 
   const emailRegEx = /\S+@\S+\.\S+/;
   const headcounts = Array(101)
@@ -158,6 +159,56 @@ export default function WhyPage() {
     )
   });
 
+  const stripeTokenHandler = (token) => {
+    // Example POST method implementation:
+    async function postData(url = '', data = {}) {
+      // Default options are marked with *
+      const response = await fetch(url, {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data) // body data type must match "Content-Type" header
+      });
+      return response.json(); // parses JSON response into native JavaScript objects
+    };
+
+    return postData('/api/checkout', {
+      tokenId: token.id,
+      email: router.query.email,
+      headcount,
+      totalCosts,
+    });
+  }
+
+  function checkout(e) {
+    e.preventDefault();
+    setDisableNext(true);
+    stripeRef.current.createToken(stripeCardRef.current)
+      .then(function(result) {
+        if (result.error) {
+          // TODO: remove alert errors, render custom UI errors
+          // Inform the customer that there was an error.
+          console.log('Error', result.error.message);
+          throw result.error;
+        } else {
+          // Send the token to your server.
+          return stripeTokenHandler(result.token);
+        }
+      })
+      .then((res) => {
+        if (res.success) {
+          console.log(res);
+          setCharged(true);
+        }
+      })
+      .catch((error) => {
+        setDisableNext(false);
+        console.log('Error', error);
+        alert(error && error.message || "Sorry, we weren't able to charge your card. Please try again.");
+      })
+  }
 
   return (
     <div className="w-full px-10 md:px-14 xl:px-24 text-runner-white font-base mt-16 mb-24">
@@ -253,10 +304,13 @@ export default function WhyPage() {
                     <div className="flex w-full text-white-runner">
                       <div className="w-[70%] pr-[4rem] space-y-[3rem] mr-[-0.5px] text-white-runner">
                         <h1 className="text-runner-white font-base w-full text-[3.5rem] font-bold capitalize text-left leading-[4.0625rem]">
-                          Membership Checkout
+                          { !charged ? 'Membership Checkout' : 'Thank you for trying Runner!'}
                         </h1>
-                        <h4 className="text-runner-white !mt-[0.75rem] w-full text-[1.3rem] font-light capitalize text-left tracking-[0.03em] leading-[1.7rem] text-opacity-[0.75]">
-                          Runner’s membership cost $200 per current employee per year with a $600 minimum. 
+                        <h4 className="text-runner-white !mt-[0.75rem] w-full text-[1.3rem] font-light text-left tracking-[0.03em] leading-[1.7rem] text-opacity-[0.75]">
+                          { !charged ? 
+                            `Runner’s membership cost $200 per current employee per year with a $600 minimum.`
+                            : `You’re set for a year of Runner. This covers unlimited matching and booking, with no recruitment fees (an average savings of at least $10,000/year). You'll receive an email from us soon.`
+                          }
                         </h4>
 
                         <div className="checkout-inner-container checkout-inner-container--multicolor-border flex flex-col items-center px-[3rem] py-[4rem]">
@@ -278,17 +332,21 @@ export default function WhyPage() {
                               </div>
                             </div>
                           </div>
-
-                          <div className="flex flex-col space-y-8 w-full mt-[3.5rem]">
-                            <p className="text-runner-white text-[1.075rem] leading-[0.75rem] tracking-[0.02em] font-medium text-opacity-[0.8]">
-                              Payment Method
-                            </p>
-                            <div className="w-full">
-                              <div className="rounded-[0.875rem] bg-[#372E40] bg-opacity-[0.2] text-[1.125rem] p-[2.21875rem]">
-                                <div id="card-element"></div>
+                          
+                          {
+                            !charged ?
+                            <div className="flex flex-col space-y-8 w-full mt-[3.5rem]">
+                              <p className="text-runner-white text-[1.075rem] leading-[0.75rem] tracking-[0.02em] font-medium text-opacity-[0.8]">
+                                Payment Method
+                              </p>
+                              <div className="w-full">
+                                <div className="rounded-[0.875rem] bg-[#372E40] bg-opacity-[0.2] text-[1.125rem] p-[2.21875rem]">
+                                  <div id="card-element"></div>
+                                </div>
                               </div>
                             </div>
-                          </div>
+                            : ''
+                          }
                         </div>
                         
                         <div className="w-full flex justify-between text-runner-white items-center w-full text-[1.3rem] font-light capitalize text-left tracking-[0.03em] leading-[1.7rem]">
@@ -296,30 +354,33 @@ export default function WhyPage() {
                           <p className="font-normal">{totalCostsFormatted }</p>
                         </div>
 
-
-                        <div className="w-full flex justify-between items-center">
-                          <div className="flex space-x-8">
-                            {
-                              Array(2).fill('').map((_, i) => <PaginationButton step={i + 1} currentActiveStep={currentStep} prevStep={prevStep} nextStep={nextStep} key={i+'_pagination'} />)
-                            }
+                        {
+                          !charged ?
+                          <div className="w-full flex justify-between items-center">
+                            <div className="flex space-x-8">
+                              {
+                                Array(2).fill('').map((_, i) => <PaginationButton step={i + 1} currentActiveStep={currentStep} prevStep={prevStep} nextStep={nextStep} key={i+'_pagination'} />)
+                              }
+                            </div>
+                            <Button 
+                              onClick={(e) => checkout(e)}
+                              tabIndex="0"
+                              disabled={headcount === '101' || disableNext}
+                              className={`${(headcount !== '101' || !disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} button-glow transition duration-300 hover:scale-105 active:scale-100 focus:scale-105 !max-w-[20rem] !w-full md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
+                              type="button"
+                            >
+                              Proceed to pay
+                            </Button>
                           </div>
-                          <Button 
-                            onClick={(e) => nextStep(e, currentStep)}
-                            tabIndex="0"
-                            disabled={headcount === '101' || disableNext}
-                            className={`${(headcount !== '101' || !disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} button-glow transition duration-300 hover:scale-105 active:scale-100 focus:scale-105 !max-w-[20rem] !w-full md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
-                            type="button"
-                          >
-                            Proceed to pay
-                          </Button>
-                        </div>
+                          : ''
+                        }
                       </div>
                       <div className={`transition ease-in-out duration-300 relative h-[100%] w-[0.5px] flex-stretch self-center`}>
                         <DividerSvg height="100%" />
                       </div>
                       <div className={`transition ease-in-out duration-700 flex items-center ml-[-0.5px] max-w-[30%] flex-grow pl-[4rem]`}>
                         <p className="text-wrap sm:h-[4rem] lg:h-[5rem] text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-right"> 
-                          Have any questions? Set up call with us before making a purchase.
+                          { !charged ? `Have any questions? Set up call with us before making a purchase.` : `Have any questions? Set up a call.` }
                           <a href={process.env.NEXT_PUBLIC_CALENDLY_LINK} className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
                             <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
                           </a>
