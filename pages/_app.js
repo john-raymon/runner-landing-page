@@ -3,12 +3,18 @@ import 'lite-react-ui/css';
 import RunnerSvg from './../public/runner-pilot.svg';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
   return (
     <div className="relative w-full flex-grow">
+    <Head>
+      <title>Runner</title>
+      <meta name="description" content="Fractional Hiring & Hires" />
+      <link rel="icon" href="/favicon.png" />
+    </Head>
       <div className="absolute md:h-auto top-0 left-0 w-full">
-          <img src="/hero-lines.png" className="object-cover h-[43rem] opacity-80 w-full" />
+          <img src="/hero-lines.png" className="object-cover h-[43rem] opacity-[0.5] w-full" />
       </div>
       <header className="sticky top-0 transparent-background-shadow z-20">
         <div className="w-full flex justify-between items-center lg:max-w-[77.87rem] mx-auto px-10 pb-10 pt-14 md:px-14 xl:px-24">
