@@ -51,5 +51,5 @@
 }
 
 .button-glow {
-  filter: drop-shadow(0px 0px 84px rgba(59, 46, 64, calc(0.42 * 0.8))) drop-shadow(0px 1px 60px rgba(97, 115, 244, calc(0.47 * 0.8)));
+  filter: drop-shadow(0px 0px 70px rgba(59, 46, 64, calc(0.42 * 0.7))) drop-shadow(0px 1px 50px rgba(97, 115, 244, calc(0.47 * 0.7)));
 }

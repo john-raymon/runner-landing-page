@@ -79,6 +79,7 @@ export default function WhyPage() {
         base: {
           color: '#FCEFED',
           fontWeight: '300',
+          fontSize: '16px',
           letterSpacing: '0.01em',
           '::placeholder': {
             color: '#FCEFED'
@@ -259,7 +260,7 @@ export default function WhyPage() {
                               tabIndex="-1"
                               type="button" 
                               onFocus={() => { selectInputRef.current.focus(); setSelectWrapperFocus(true); }} 
-                              className={`${selectWrapperFocus ? 'scale-105 border-opacity-[0.2] border-runner-white' : 'scale-100 border-opacity-[0] border-transparent'} border-[0.1rem] transform transition duration-300 ease-in-out hover:scale-105 base-select relative flex items-center justify-between rounded-[1.5rem] bg-[#372E40] bg-opacity-[0.6] px-[2.5rem] py-[1.875rem] w-full cursor-pointer`}
+                              className={`${selectWrapperFocus ? 'md:scale-105 border-opacity-[0.2] border-runner-white' : 'md:scale-100 border-opacity-[0] border-transparent'} border-[0.1rem] transform transition md:duration-300 ease-in-out md:hover:scale-105 base-select relative flex items-center justify-between rounded-[1.5rem] bg-[#372E40] bg-opacity-[0.6] px-[2.5rem] py-[1.875rem] w-full cursor-pointer`}
                             >
                               <p className="text-left text-[1rem] text-runner-white text-opacity-[0.70] tracking-[0.06rem] font-light leading-[1rem] pr-1">
                                 { headcounts[headcount] || 'Select a number of employees' }
@@ -369,7 +370,7 @@ export default function WhyPage() {
                                 Payment Method
                               </p>
                               <div className="w-full">
-                                <div className="rounded-[0.875rem] bg-[#372E40] bg-opacity-[0.2] text-[0.5rem] md:text-[1.125rem] py-[1rem] px-[0.75rem] md:p-[2.21875rem]">
+                                <div className="rounded-[0.875rem] bg-[#372E40] leading-[1rem] bg-opacity-[0.2] text-[16px] py-[1rem] px-[0.75rem] md:p-[2.21875rem]">
                                   <div id="card-element"></div>
                                 </div>
                               </div>
