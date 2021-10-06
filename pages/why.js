@@ -7,7 +7,6 @@ export default function WhyPage() {
       <Head>
         <title>Runner - Why?</title>
         <meta name="description" content="Fractional Hiring & Hires" />
-        <link rel="icon" href="/favicon.png" />
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </Head>
       <main className="flex relative w-full w-full mt-[0.5rem] md:mt-[2rem] lg:mt-[4rem] pt-4 pb-[5rem]">

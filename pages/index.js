@@ -11,7 +11,6 @@ export default function Home() {
       <Head>
         <title>Runner</title>
         <meta name="description" content="Fractional Hiring & Hires" />
-        <link rel="icon" href="/favicon.png" />
       </Head>
       <main className="flex flex-col relative w-full w-full">
         <section>
@@ -39,7 +38,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mx-1 hidden w-px md:block">
-              <DividerSvg />
+              <DividerSvg height="100%" />
             </div>
             <div className="my-2 h-px w-full md:hidden">
               <HorizDividerSvg />
