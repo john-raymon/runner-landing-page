@@ -7,6 +7,7 @@ import GradientCircleSvg from './../public/gradient-circle.svg';
 import WhiteCircleSvg from './../public/white-circle.svg';
 import DividerSvg from './../public/vertical-divider.svg';
 import PlanetSvg from './../public/planet.svg';
+import HorizDividerSvg from './../public/horiz-divider.svg';
 import head from 'next/head';
 import { loadStripe } from "@stripe/stripe-js";
 
@@ -78,8 +79,7 @@ export default function WhyPage() {
         base: {
           color: '#FCEFED',
           fontWeight: '300',
-          fontSize: '18px',
-          letterSpacing: '0.02em',
+          letterSpacing: '0.01em',
           '::placeholder': {
             color: '#FCEFED'
           },
@@ -211,7 +211,7 @@ export default function WhyPage() {
   }
 
   return (
-    <div className="w-full px-10 md:px-14 xl:px-24 text-runner-white font-base mt-16 mb-24">
+    <div className="w-full px-1 sm:px-3 md:px-14 xl:px-24 text-runner-white font-base mt-4 mb-6 md:mt-16 md:mb-24">
       <Head>
         <title>Runner - Last Step</title>
       </Head>
@@ -227,17 +227,31 @@ export default function WhyPage() {
               switch(currentStep) {
                 case '1': 
                   return (
-                    <div className="flex w-full">
-                      <div className="w-[70%] pr-[4rem] space-y-12 mr-[-0.5px]">
-                        <h1 className="font-base w-full text-[3rem] font-semibold capitalize text-left tracking-[0.03em] leading-[3rem]">
+                    <div className="flex w-full flex-col md:flex-row">
+                      <div className="w-full md:w-[70%] md:pr-[4rem] space-y-6 md:space-y-12 md:mr-[-1px]">
+                        <h1 className="font-base w-full text-[2.5rem] md:text-[3rem] font-semibold capitalize text-left tracking-[0.03em] leading-[2.5rem] md:leading-[3rem]">
                           Finish registering
                         </h1>
 
-                        <div className="checkout-inner-container flex items-center px-[3rem] py-[7.5rem]">
+                        <div className={`${headcount !== '101' ? 'h-0' : 'h-auto'} flex flex-col space-y-4 md:hidden w-full`}>
+                          <div className={`${headcount !== '101' ? 'opacity-0 h-0' : 'opacity-[1] h-[0.5px]'} my-2 w-full`}>
+                            <HorizDividerSvg />
+                          </div>
+                          <div className={`${headcount !== '101' ? 'opacity-0 h-0' : 'opacity-[1] h-auto'} flex transition ease-in-out duration-700 items-center flex-grow`}>
+                            <p className={`${headcount !== '101' ? 'h-0' : 'h-auto'} text-wrap text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-left`}> 
+                              More than 100 current employees?
+                              <a className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
+                                <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
+                              </a>
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="checkout-inner-container flex items-center px-[1.5rem] py-[4rem] md:px-[3rem] md:py-[7.5rem]">
                           <div className="flex flex-col space-y-6 w-full">
-                            <label className="text-runner-white text-[1.375rem] leading-[0.75rem] tracking-[0.02em] font-medium">
+                            <label className="text-runner-white text-[1.375rem] leading-[1.5rem] tracking-[0.02em] font-medium">
                               How many employees do you currently have?
-                              <p className="font-light tracking-[0.06em] text-[0.9rem] opacity-[0.8] leading-[0.75rem] mt-3">
+                              <p className="font-light tracking-[0.06em] text-[0.9rem] opacity-[0.8] leading-[0.95rem] mt-3">
                                 Including yourself, full-time, and part-time employees.
                               </p>
                             </label>
@@ -245,13 +259,13 @@ export default function WhyPage() {
                               tabIndex="-1"
                               type="button" 
                               onFocus={() => { selectInputRef.current.focus(); setSelectWrapperFocus(true); }} 
-                              className={`${selectWrapperFocus ? 'scale-105 border-opacity-[0.2] border-runner-white' : 'scale-100 border-opacity-[0] border-transparent'} border-[0.1rem] transform transition duration-300 ease-in-out hover:scale-105 base-select relative flex justify-between rounded-[1.5rem] bg-[#372E40] bg-opacity-[0.6] px-[2.5rem] py-[1.875rem] w-full cursor-pointer`}
+                              className={`${selectWrapperFocus ? 'scale-105 border-opacity-[0.2] border-runner-white' : 'scale-100 border-opacity-[0] border-transparent'} border-[0.1rem] transform transition duration-300 ease-in-out hover:scale-105 base-select relative flex items-center justify-between rounded-[1.5rem] bg-[#372E40] bg-opacity-[0.6] px-[2.5rem] py-[1.875rem] w-full cursor-pointer`}
                             >
-                              <p className="text-[1rem] text-runner-white text-opacity-[0.70] tracking-[0.06rem] font-light leading-[0.75rem]">
+                              <p className="text-left text-[1rem] text-runner-white text-opacity-[0.70] tracking-[0.06rem] font-light leading-[1rem] pr-1">
                                 { headcounts[headcount] || 'Select a number of employees' }
                               </p>
                               <div className="w-[1rem] h-auto">
-                                <DownTriangleSvg />
+                                <DownTriangleSvg width="1rem" />
                               </div>
                               <select
                                 name="headcount"
@@ -270,8 +284,8 @@ export default function WhyPage() {
                           </div>
                         </div>
                         
-                        <div className="w-full flex justify-between items-center">
-                          <div className="flex space-x-8">
+                        <div className="w-full flex flex-col md:flex-row justify-between items-center">
+                          <div className="flex space-x-8 mb-6 md:mb-0">
                             {
                               Array(2).fill('').map((_, i) => <PaginationButton step={i + 1} currentActiveStep={currentStep} prevStep={prevStep} nextStep={nextStep} key={i+'_pagination'} />)
                             }
@@ -279,18 +293,18 @@ export default function WhyPage() {
                           <Button 
                             onClick={(e) => nextStep(e, currentStep)}
                             disabled={headcount === '101' || !!disableNext}
-                            className={`${(headcount !== '101' || !disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} button-glow transition duration-300 hover:scale-105 active:scale-100 focus:scale-105 !max-w-[20rem] !w-full bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
+                            className={`${(headcount !== '101' || !disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} md:ml-5 lg:ml-0 button-glow transition duration-300 hover:scale-105 active:scale-100 focus:scale-105 !max-w-[20rem] !w-full bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
                             type="button"
                           >
                             Continue
                           </Button>
                         </div>
                       </div>
-                      <div className={`${headcount !== '101' ? 'opacity-0' : 'opacity-[1]'} transition ease-in-out duration-300 relative h-[100%] w-[0.5px]`}>
-                        <DividerSvg height="100%" />
+                      <div className={`${headcount !== '101' ? 'opacity-0' : 'opacity-[1]'} hidden md:flex self-center transition ease-in-out duration-300 relative h-[100%] w-[0.5px]`}>
+                        <DividerSvg width="0.5px" height="100%" />
                       </div>
-                      <div className={`${headcount !== '101' ? 'opacity-0' : 'opacity-[1]'} transition ease-in-out duration-700 flex items-center ml-[-0.5px] max-w-[30%] flex-grow pl-[4rem]`}>
-                        <p className="text-wrap sm:h-[4rem] lg:h-[5rem] text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-right"> 
+                      <div className={`${headcount !== '101' ? 'opacity-0' : 'opacity-[1]'} hidden md:flex transition ease-in-out duration-700 items-center ml-[-0.5px] max-w-[30%] flex-grow pl-[4rem]`}>
+                        <p className="text-wrap sm:h-[4rem] lg:h-[5rem] text-[1rem] lg:text-[1.2625rem] leading-[1.2rem] lg:leading-[1.2625rem] font-base font-extralight tracking-[0.03em] text-runner-white text-right"> 
                           More than 100 current employees?
                           <a className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
                             <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
@@ -301,32 +315,47 @@ export default function WhyPage() {
                   )
                 case '2':
                   return (
-                    <div className="flex w-full text-white-runner">
-                      <div className="w-[70%] pr-[4rem] space-y-[3rem] mr-[-0.5px] text-white-runner">
-                        <h1 className="text-runner-white font-base w-full text-[3.5rem] font-bold capitalize text-left leading-[4.0625rem]">
+                    <div className="flex flex-col md:flex-row w-full text-white-runner">
+                      <div className="w-full md:w-[70%] pr-0 md:pr-[4rem] space-y-6 md:space-y-[3rem] md:mr-[-1px] text-white-runner">
+                        <h1 className="text-[2.5rem] md:text-[3rem] text-runner-white font-base w-full font-bold capitalize text-left leading-[2.5rem] md:leading-[3rem]">
                           { !charged ? 'Membership Checkout' : 'Thank you for trying Runner!'}
                         </h1>
-                        <h4 className="text-runner-white !mt-[0.75rem] w-full text-[1.3rem] font-light text-left tracking-[0.03em] leading-[1.7rem] text-opacity-[0.75]">
+                        <h4 className="text-runner-white !mt-[0.75rem] w-full text-[1rem] md:text-[1.3rem] font-light text-left tracking-[0.03em] leading-[1rem] md:leading-[1.4rem] text-opacity-[0.75]">
                           { !charged ? 
                             `Runner’s membership cost $200 per current employee per year with a $600 minimum.`
                             : `You’re set for a year of Runner. This covers unlimited matching and booking, with no recruitment fees (an average savings of at least $10,000/year). You'll receive an email from us soon.`
                           }
                         </h4>
 
-                        <div className="checkout-inner-container checkout-inner-container--multicolor-border flex flex-col items-center px-[3rem] py-[4rem]">
+
+                        <div className={`flex flex-col space-y-4 md:hidden w-full`}>
+                          <div className={`my-2 w-full`}>
+                            <HorizDividerSvg />
+                          </div>
+                          <div className={`flex transition ease-in-out duration-700 items-center flex-grow`}>
+                            <p className={`text-wrap text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-left`}> 
+                              { !charged ? `Have any questions? Set up call with us before making a purchase.` : `Have any questions? Set up a call.` }
+                              <a className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
+                                <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
+                              </a>
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="checkout-inner-container checkout-inner-container--multicolor-border flex flex-col items-center px-[0.6rem] sm:px-[1rem] py-[4rem] md:px-[3rem] md:py-[4rem]">
                           <div className="flex flex-col space-y-8 w-full">
                             <p className="text-runner-white text-[1.075rem] leading-[0.75rem] tracking-[0.02em] font-medium text-opacity-[0.8]">
                               Payment Summary
                             </p>
-                            <div className="flex justify-between rounded-[0.875rem] p-[2.21875rem] w-full  bg-opacity-[0.2]">
+                            <div className="flex items-center justify-between rounded-[0.875rem] px-[0.5rem] lg:p-[2.21875rem] w-full bg-opacity-[0.2]">
                               <div className="w-[2rem] h-auto">
                                 <PlanetSvg width="100%" />  
                               </div>
-                              <div className="flex font-light items-center justify-between w-full pl-[1.59375rem] text-[1.125rem] tracking-[0.02em] leading-[0.75rem] text-opacity-[0.9]">
+                              <div className="flex font-light items-center space-x-[0.2rem] justify-between w-full pl-[0.5rem] lg:pl-[1.59375rem] text-[0.8rem] lg:text-[1.125rem] lg:tracking-[0.02em] leading-[0.8rem] lg:leading-[1rem] text-opacity-[0.9]">
                                 <p>
                                   {headcounts[headcount]}
                                 </p>
-                                <p>
+                                <p className="text-right">
                                   {totalCostsFormatted} USD / per year
                                 </p>
                               </div>
@@ -340,7 +369,7 @@ export default function WhyPage() {
                                 Payment Method
                               </p>
                               <div className="w-full">
-                                <div className="rounded-[0.875rem] bg-[#372E40] bg-opacity-[0.2] text-[1.125rem] p-[2.21875rem]">
+                                <div className="rounded-[0.875rem] bg-[#372E40] bg-opacity-[0.2] text-[0.5rem] md:text-[1.125rem] py-[1rem] px-[0.75rem] md:p-[2.21875rem]">
                                   <div id="card-element"></div>
                                 </div>
                               </div>
@@ -356,8 +385,8 @@ export default function WhyPage() {
 
                         {
                           !charged ?
-                          <div className="w-full flex justify-between items-center">
-                            <div className="flex space-x-8">
+                          <div className="w-full flex flex-col md:flex-row justify-between items-center">
+                            <div className="flex space-x-8 mb-6 md:mb-0">
                               {
                                 Array(2).fill('').map((_, i) => <PaginationButton step={i + 1} currentActiveStep={currentStep} prevStep={prevStep} nextStep={nextStep} key={i+'_pagination'} />)
                               }
@@ -366,7 +395,7 @@ export default function WhyPage() {
                               onClick={(e) => checkout(e)}
                               tabIndex="0"
                               disabled={headcount === '101' || disableNext}
-                              className={`${(headcount !== '101' || !disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} button-glow transition duration-300 hover:scale-105 active:scale-100 focus:scale-105 !max-w-[20rem] !w-full md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
+                              className={`${(headcount !== '101' || !disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} md:ml-5 button-glow transition duration-300 hover:scale-105 active:scale-100 focus:scale-105 !max-w-[20rem] !w-full md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
                               type="button"
                             >
                               Proceed to pay
@@ -375,11 +404,11 @@ export default function WhyPage() {
                           : ''
                         }
                       </div>
-                      <div className={`transition ease-in-out duration-300 relative h-[100%] w-[0.5px] flex-stretch self-center`}>
-                        <DividerSvg height="100%" />
+                      <div className={`hidden md:flex transition ease-in-out duration-300 relative h-[100%] w-[0.5px] flex-stretch self-center`}>
+                        <DividerSvg width="0.5px" height="100%" />
                       </div>
-                      <div className={`transition ease-in-out duration-700 flex items-center ml-[-0.5px] max-w-[30%] flex-grow pl-[4rem]`}>
-                        <p className="text-wrap sm:h-[4rem] lg:h-[5rem] text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-right"> 
+                      <div className={`hidden md:flex transition ease-in-out duration-700 items-center ml-[-1px] max-w-[29%] flex-grow pl-[4rem]`}>
+                        <p className="text-wrap sm:h-[4rem] lg:h-[5rem] text-[1rem] lg:text-[1.2625rem] leading-[1.2rem] lg:leading-[1.2625rem] font-base font-extralight tracking-[0.03em] text-runner-white text-right"> 
                           { !charged ? `Have any questions? Set up call with us before making a purchase.` : `Have any questions? Set up a call.` }
                           <a href={process.env.NEXT_PUBLIC_CALENDLY_LINK} className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
                             <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>

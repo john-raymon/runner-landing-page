@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
           <img src="/hero-lines.png" className="object-cover h-[43rem] opacity-[0.5] w-full" />
       </div>
       <header className="sticky top-0 transparent-background-shadow z-20">
-        <div className="w-full flex justify-between items-center lg:max-w-[77.87rem] mx-auto px-10 pb-10 pt-14 md:px-14 xl:px-24">
+        <div className="w-full flex justify-between items-center lg:max-w-[77.87rem] mx-auto px-6 sm:px-10 pb-10 pt-14 md:px-14 xl:px-24">
           <Link href="/">
             <a className="w-[7.25rem] lg:w-[10rem] h-auto">
               <RunnerSvg className="fill-current text-runner-white"/>
@@ -31,7 +31,7 @@ function MyApp({ Component, pageProps }) {
           </Link>
         </div>
       </header>
-      <div className="font-base relative min-h-screen lg:max-w-[77.87rem] w-full mx-auto justify-center px-8 xl:px-0">
+      <div className="font-base relative min-h-screen lg:max-w-[77.87rem] w-full mx-auto justify-center px-4 sm:px-8 xl:px-0">
 
         <main className="w-full">
           <Component {...pageProps} />
