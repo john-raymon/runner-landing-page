@@ -29,12 +29,12 @@ function PaginationButton({step, currentActiveStep, prevStep, nextStep}) {
     <button 
       disabled={!isNextStep && !isPrevStep && !isActive} 
       onClick={(e) => (isActive ? null : isNextStep ? nextStep(e, currentActiveStep) : (isPrevStep ? prevStep(e, currentActiveStep) : null) )} 
-      className={`w-[0.7rem] h-auto cursor-pointer disabled:opacity-[0.20] ${isActive ? 'transform scale-[1.75]' : ''}`}>
+      className={`w-[0.7rem] h-[0.7rem] mx-6 cursor-pointer disabled:opacity-[0.20] ${isActive ? 'transform scale-[1.75]' : ''}`}>
       {
         isActive ?
-        <GradientCircleSvg />
+        <GradientCircleSvg height="0.7rem" width="0.7rem" />
         :
-        <WhiteCircleSvg />
+        <WhiteCircleSvg height="0.7rem" width="0.7rem" />
       }
     </button>
   )
@@ -258,8 +258,9 @@ export default function WhyPage() {
                             </label>
                             <button 
                               tabIndex="-1"
-                              type="button" 
+                              type="button"
                               onFocus={() => { selectInputRef.current.focus(); setSelectWrapperFocus(true); }} 
+                              onClick={() => { selectInputRef.current.focus(); setSelectWrapperFocus(true); }} 
                               className={`${selectWrapperFocus ? 'md:scale-105 border-opacity-[0.2] border-runner-white' : 'md:scale-100 border-opacity-[0] border-transparent'} border-[0.1rem] transform transition md:duration-300 ease-in-out md:hover:scale-105 base-select relative flex items-center justify-between rounded-[1.5rem] bg-[#372E40] bg-opacity-[0.6] px-[2.5rem] py-[1.875rem] w-full cursor-pointer`}
                             >
                               <p className="text-left text-[1rem] text-runner-white text-opacity-[0.70] tracking-[0.06rem] font-light leading-[1rem] pr-1">
@@ -285,8 +286,8 @@ export default function WhyPage() {
                           </div>
                         </div>
                         
-                        <div className="w-full flex flex-col md:flex-row justify-between items-center">
-                          <div className="flex space-x-8 mb-6 md:mb-0">
+                        <div className="w-full flex flex-col md:flex-row justify-between items-center !mb-6 md:mb-0">
+                          <div className="flex py-4 mb-6 md:mb-0">
                             {
                               Array(2).fill('').map((_, i) => <PaginationButton step={i + 1} currentActiveStep={currentStep} prevStep={prevStep} nextStep={nextStep} key={i+'_pagination'} />)
                             }
@@ -294,7 +295,7 @@ export default function WhyPage() {
                           <Button 
                             onClick={(e) => nextStep(e, currentStep)}
                             disabled={headcount === '101' || !!disableNext}
-                            className={`${(headcount !== '101' || !disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} md:ml-5 lg:ml-0 button-glow transition duration-300 hover:scale-105 active:scale-100 focus:scale-105 !max-w-[20rem] !w-full bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
+                            className={`${(headcount !== '101' || !disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} md:ml-5 lg:ml-0 md:button-glow transition duration-300 hover:scale-105 active:scale-100 focus:scale-105 !max-w-[20rem] !w-full bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
                             type="button"
                           >
                             Continue
@@ -317,11 +318,11 @@ export default function WhyPage() {
                 case '2':
                   return (
                     <div className="flex flex-col md:flex-row w-full text-white-runner">
-                      <div className="w-full md:w-[70%] pr-0 md:pr-[4rem] space-y-6 md:space-y-[3rem] md:mr-[-1px] text-white-runner">
+                      <div className="w-full md:w-[70%] pr-0 md:pr-[4rem] space-y-3 md:space-y-[3rem] md:mr-[-1px] text-white-runner">
                         <h1 className="text-[2.5rem] md:text-[3rem] text-runner-white font-base w-full font-bold capitalize text-left leading-[2.5rem] md:leading-[3rem]">
                           { !charged ? 'Membership Checkout' : 'Thank you for trying Runner!'}
                         </h1>
-                        <h4 className="text-runner-white !mt-[0.75rem] w-full text-[1rem] md:text-[1.3rem] font-light text-left tracking-[0.03em] leading-[1rem] md:leading-[1.4rem] text-opacity-[0.75]">
+                        <h4 className="text-runner-white !mt-[0.75rem] w-full text-[1rem] md:text-[1.3rem] font-light text-left tracking-[0.03em] leading-[1.15rem] md:leading-[1.4rem] text-opacity-[0.75]">
                           { !charged ? 
                             `Runner’s membership cost $200 per current employee per year with a $600 minimum.`
                             : `You’re set for a year of Runner. This covers unlimited matching and booking, with no recruitment fees (an average savings of at least $10,000/year). You'll receive an email from us soon.`
@@ -329,12 +330,12 @@ export default function WhyPage() {
                         </h4>
 
 
-                        <div className={`flex flex-col space-y-4 md:hidden w-full`}>
+                        <div className="flex flex-col md:hidden w-full pb-4 md:pb-0">
                           <div className={`my-2 w-full`}>
                             <HorizDividerSvg />
                           </div>
-                          <div className={`flex transition ease-in-out duration-700 items-center flex-grow`}>
-                            <p className={`text-wrap text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-left`}> 
+                          <div className={`flex transition ease-in-out duration-700 items-center flex-grow mt-3`}>
+                            <p className={`text-wrap text-[1rem] lg:text-[1.2625rem] leading-[1.1rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-left`}> 
                               { !charged ? `Have any questions? Set up call with us before making a purchase.` : `Have any questions? Set up a call.` }
                               <a className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
                                 <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
@@ -343,7 +344,7 @@ export default function WhyPage() {
                           </div>
                         </div>
 
-                        <div className="checkout-inner-container checkout-inner-container--multicolor-border flex flex-col items-center px-[0.6rem] sm:px-[1rem] py-[4rem] md:px-[3rem] md:py-[4rem]">
+                        <div className="checkout-inner-container checkout-inner-container--multicolor-border flex flex-col items-center px-[1.5rem] sm:px-[1rem] py-[4rem] md:px-[3rem] md:py-[4rem]">
                           <div className="flex flex-col space-y-8 w-full">
                             <p className="text-runner-white text-[1.075rem] leading-[0.75rem] tracking-[0.02em] font-medium text-opacity-[0.8]">
                               Payment Summary
@@ -365,12 +366,12 @@ export default function WhyPage() {
                           
                           {
                             !charged ?
-                            <div className="flex flex-col space-y-8 w-full mt-[3.5rem]">
+                            <div className="flex flex-col space-y-8 w-full mt-[3rem]">
                               <p className="text-runner-white text-[1.075rem] leading-[0.75rem] tracking-[0.02em] font-medium text-opacity-[0.8]">
                                 Payment Method
                               </p>
                               <div className="w-full">
-                                <div className="rounded-[0.875rem] bg-[#372E40] leading-[1rem] bg-opacity-[0.2] text-[16px] py-[1rem] px-[0.75rem] md:p-[2.21875rem]">
+                                <div className="rounded-[0.875rem] bg-[#372E40] bg-opacity-[0.6] leading-[1rem] text-[16px] py-[1rem] px-[0.45rem] md:p-[2.21875rem]">
                                   <div id="card-element"></div>
                                 </div>
                               </div>
@@ -386,8 +387,8 @@ export default function WhyPage() {
 
                         {
                           !charged ?
-                          <div className="w-full flex flex-col md:flex-row justify-between items-center">
-                            <div className="flex space-x-8 mb-6 md:mb-0">
+                          <div className="w-full flex flex-col md:flex-row justify-between items-center !mb-6 md:mb-0">
+                            <div className="flex py-4 mb-6 md:mb-0">
                               {
                                 Array(2).fill('').map((_, i) => <PaginationButton step={i + 1} currentActiveStep={currentStep} prevStep={prevStep} nextStep={nextStep} key={i+'_pagination'} />)
                               }
@@ -396,7 +397,7 @@ export default function WhyPage() {
                               onClick={(e) => checkout(e)}
                               tabIndex="0"
                               disabled={headcount === '101' || disableNext}
-                              className={`${(headcount !== '101' || !disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} md:ml-5 button-glow transition duration-300 hover:scale-105 active:scale-100 focus:scale-105 !max-w-[20rem] !w-full md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
+                              className={`${(headcount !== '101' || !disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} md:ml-5 md:button-glow transition duration-300 hover:scale-105 active:scale-100 focus:scale-105 !max-w-[20rem] !w-full md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
                               type="button"
                             >
                               Proceed to pay
@@ -408,8 +409,8 @@ export default function WhyPage() {
                       <div className={`hidden md:flex transition ease-in-out duration-300 relative h-[100%] w-[0.5px] flex-stretch self-center`}>
                         <DividerSvg width="0.5px" height="100%" />
                       </div>
-                      <div className={`hidden md:flex transition ease-in-out duration-700 items-center ml-[-1px] max-w-[29%] flex-grow pl-[4rem]`}>
-                        <p className="text-wrap sm:h-[4rem] lg:h-[5rem] text-[1rem] lg:text-[1.2625rem] leading-[1.2rem] lg:leading-[1.2625rem] font-base font-extralight tracking-[0.03em] text-runner-white text-right"> 
+                      <div className={`hidden md:flex transition ease-in-out duration-700 items-center ml-[-1px] w-[29%] flex-grow pl-[4rem]`}>
+                        <p className="text-wrap sm:h-[4rem] lg:h-[5rem] text-[1rem] lg:text-[1.2625rem] leading-[1.2rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-right"> 
                           { !charged ? `Have any questions? Set up call with us before making a purchase.` : `Have any questions? Set up a call.` }
                           <a href={process.env.NEXT_PUBLIC_CALENDLY_LINK} className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
                             <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
