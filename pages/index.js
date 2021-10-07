@@ -33,7 +33,7 @@ export default function Home() {
                 </p>
                 <Link href="/company-on-board">
                   <Button className="md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
-                    Reserve
+                    Hire Runner
                   </Button>
                 </Link>
               </div>

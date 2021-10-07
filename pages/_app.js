@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import 'lite-react-ui/css';
-import RunnerSvg from './../public/runner-pilot.svg';
+import RunnerSvg from './../public/runner-beta.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';

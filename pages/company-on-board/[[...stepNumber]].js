@@ -2,12 +2,12 @@ import Head from 'next/head'
 import { useRouter } from 'next/router';
 import { useEffect, useState, useRef } from 'react';
 import { Button, TextField } from 'lite-react-ui';
-import DownTriangleSvg from './../public/down-triangle.svg';
-import GradientCircleSvg from './../public/gradient-circle.svg';
-import WhiteCircleSvg from './../public/white-circle.svg';
-import DividerSvg from './../public/vertical-divider.svg';
-import PlanetSvg from './../public/planet.svg';
-import HorizDividerSvg from './../public/horiz-divider.svg';
+import DownTriangleSvg from './../../public/down-triangle.svg';
+import GradientCircleSvg from './../../public/gradient-circle.svg';
+import WhiteCircleSvg from './../../public/white-circle.svg';
+import DividerSvg from './../../public/vertical-divider.svg';
+import PlanetSvg from './../../public/planet.svg';
+import HorizDividerSvg from './../../public/horiz-divider.svg';
 import head from 'next/head';
 import { loadStripe } from "@stripe/stripe-js";
 
@@ -120,9 +120,15 @@ export default function WhyPage() {
 
   // useEffect(() => {
   //   if(!router.isReady) return;
-  //   const { email } = router.query;
-  //   setDecodedEmail(decodeURIComponent(email));
+  //   const { stepNumber = '1' } = router.query;
+  //   setCurrentStep(stepNumber);
   // }, [router.isReady]);
+
+  useEffect(() => {
+    const { stepNumber = ['1'] } = router.query;
+    const [step] = stepNumber;
+    setCurrentStep(step);
+  }, [router.query])
 
   // useEffect(() => { 
   //   if (!decodedEmail) return;
@@ -141,7 +147,8 @@ export default function WhyPage() {
     if (currentStep === '1') {
       setDisableNext(true);
       if (companyWebsite.trim() && companyName.trim() && decodedEmail.trim()) {
-        setCurrentStep('2');
+        // setCurrentStep('2');
+        router.push('2'); 
       }
       setDisableNext(false);
     }
@@ -152,7 +159,8 @@ export default function WhyPage() {
         const totalCosts = +headcount <= 3 ? 600 : (+headcount * 200);
         setTotalCosts(totalCosts);
         setTotalCostsFormatted(formatter.format(totalCosts));
-        setCurrentStep(+currentStep + 1 + '');
+        router.push(`${+currentStep + 1 + ''}`); 
+        // setCurrentStep(+currentStep + 1 + '');
         setDisableNext(false);
       }
     }
@@ -160,7 +168,8 @@ export default function WhyPage() {
 
   function prevStep(e, currentStep) {
     e.preventDefault();
-    setCurrentStep(+currentStep - 1 < 1 ? '1' : +currentStep - 1 + '');
+    // setCurrentStep(+currentStep - 1 < 1 ? '1' : +currentStep - 1 + '');
+    router.push(`${+currentStep - 1 < 1 ? '1' : +currentStep - 1 + ''}`); 
   }
     
   const allHeadcountOptions = Object.keys(headcounts).map((headcount) => {
@@ -172,18 +181,23 @@ export default function WhyPage() {
   });
 
   const stripeTokenHandler = (token) => {
+    let responseNotOk = false;
     // Example POST method implementation:
-    async function postData(url = '', data = {}) {
+    function postData(url = '', data = {}) {
       // Default options are marked with *
-      const response = await fetch(url, {
+      return fetch(url, {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data) // body data type must match "Content-Type" header
-      });
-      return response.json(); // parses JSON response into native JavaScript objects
+      }).then((response) => {
+        if (!response.ok) {
+          throw response.json();
+        }
+        return response.json(); // parses JSON response into native JavaScript objects
+      })
     };
 
     return postData('/api/checkout', {
@@ -221,6 +235,9 @@ export default function WhyPage() {
         setDisableNext(false);
         console.log('Error', error);
         alert(error && error.message || "Sorry, we weren't able to charge your card. Please try again.");
+      })
+      .finally(() => {
+        setDisableNext(false);
       })
   }
 
