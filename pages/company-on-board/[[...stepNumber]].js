@@ -272,7 +272,7 @@ export default function WhyPage() {
                           </div>
                           <div className={`flex transition ease-in-out duration-700 items-center flex-grow mt-3`}>
                             <p className={`text-wrap text-[1rem] lg:text-[1.2625rem] leading-[1.1rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-left`}> 
-                              { !charged ? `Have any questions? Set up a call with us before making a purchase.` : `Have any questions? Set up a call.` }
+                              { !charged ? `Have any questions? Set up a call with us.` : `Have any questions? Set up a call.` }
                               <a target="_blank" rel="noopener noreferrer" href={process.env.NEXT_PUBLIC_CALENDLY_LINK} className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
                                 <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
                               </a>
@@ -474,7 +474,7 @@ export default function WhyPage() {
                           </div>
                           <div className={`flex transition ease-in-out duration-700 items-center flex-grow mt-3`}>
                             <p className={`text-wrap text-[1rem] lg:text-[1.2625rem] leading-[1.1rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-left`}> 
-                              { !charged ? `Have any questions? Set up a call with us before making a purchase.` : `Have any questions? Set up a call.` }
+                              { !charged ? `Have any questions? Set up a call with us.` : `Have any questions? Set up a call.` }
                               <a target="_blank" rel="noopener noreferrer" href={process.env.NEXT_PUBLIC_CALENDLY_LINK} className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
                                 <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
                               </a>
@@ -549,7 +549,7 @@ export default function WhyPage() {
                       </div>
                       <div className={`hidden md:flex transition ease-in-out duration-700 items-center ml-[-1px] w-[29%] flex-grow pl-[4rem]`}>
                         <p className="text-wrap sm:h-[4rem] lg:h-[5rem] text-[1rem] lg:text-[1.2625rem] leading-[1.2rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-right"> 
-                          { !charged ? `Have any questions? Set up a call with us before making a purchase.` : `Have any questions? Set up a call.` }
+                          { !charged ? `Have any questions? Set up a call with us.` : `Have any questions? Set up a call.` }
                           <a target="_blank" rel="noopener noreferrer" href={process.env.NEXT_PUBLIC_CALENDLY_LINK} className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
                             <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
                           </a>
