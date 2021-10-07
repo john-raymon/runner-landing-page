@@ -449,8 +449,8 @@ export default function WhyPage() {
                   return (
                     <div className="flex flex-col md:flex-row w-full text-white-runner">
                       <div className="w-full md:w-[70%] pr-0 md:pr-[4rem] space-y-3 md:space-y-[3rem] md:mr-[-1px] text-white-runner">
-                        <h1 className="text-[2.5rem] md:text-[3rem] text-runner-white font-base w-full font-bold capitalize text-left leading-[2.5rem] md:leading-[3rem]">
-                          { !charged ? 'Membership Checkout' : 'Thank you for trying Runner!'}
+                        <h1 className="text-[2.5rem] md:text-[3rem] text-runner-white font-base w-full font-bold text-left leading-[2.5rem] md:leading-[3rem]">
+                          { !charged ? 'Membership Checkout' : 'Thank you for hiring Runner!'}
                         </h1>
                         <h4 className="text-runner-white !mt-[0.75rem] w-full text-[1rem] md:text-[1.3rem] font-light text-left tracking-[0.03em] leading-[1.2rem] md:leading-[1.7rem] text-opacity-[0.8]">
                           { !charged ? 
