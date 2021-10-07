@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router';
 import { useEffect, useState, useRef } from 'react';
-import { Button } from 'lite-react-ui';
+import { Button, TextField } from 'lite-react-ui';
 import DownTriangleSvg from './../public/down-triangle.svg';
 import GradientCircleSvg from './../public/gradient-circle.svg';
 import WhiteCircleSvg from './../public/white-circle.svg';
@@ -42,8 +42,8 @@ function PaginationButton({step, currentActiveStep, prevStep, nextStep}) {
 
 export default function WhyPage() {
   const router = useRouter();
-  const [isLoading, setLoading] = useState(true);
-  const [currentStep, setCurrentStep] = useState(null); 
+  const [isLoading, setLoading] = useState(false);
+  const [currentStep, setCurrentStep] = useState('1'); 
   const [decodedEmail, setDecodedEmail] = useState('');
   const [headcount, setHeadcount] = useState('');
   const [selectWrapperFocus, setSelectWrapperFocus] = useState(false);
@@ -54,6 +54,8 @@ export default function WhyPage() {
   const [totalCosts, setTotalCosts] = useState(0); 
   const [totalCostsFormatted, setTotalCostsFormatted] = useState('');
   const [charged, setCharged] = useState(false);
+  const [companyName, setCompanyName] = useState('');
+  const [companyWebsite, setCompanyWebsite] = useState('');
 
   const emailRegEx = /\S+@\S+\.\S+/;
   const headcounts = Array(101)
@@ -99,42 +101,51 @@ export default function WhyPage() {
   }
 
   useEffect(() => {
-    if (currentStep === '2') {
+    if (currentStep === '3') {
       setUpStripeElementCard();
     }
   }, [currentStep])
 
   useEffect(() => {
-    if (!headcount) {
-      setDisableNext(true);
+    if (currentStep === '2') {
+      if (!headcount) {
+        setDisableNext(true);
+      }
+  
+      if (headcount && headcount !== '101') {
+        setDisableNext(false);
+      };
     }
-
-    if (headcount && headcount !== '101') {
-      setDisableNext(false);
-    };
   }, [headcount])
 
-  useEffect(() => {
-    if(!router.isReady) return;
-    const { email } = router.query;
-    setDecodedEmail(decodeURIComponent(email));
-  }, [router.isReady]);
+  // useEffect(() => {
+  //   if(!router.isReady) return;
+  //   const { email } = router.query;
+  //   setDecodedEmail(decodeURIComponent(email));
+  // }, [router.isReady]);
 
-  useEffect(() => {
-    if (!decodedEmail) return;
-    if (emailRegEx.test(decodedEmail)) {
-      setCurrentStep('1');
-      setLoading(false);
-    } else {
-      // do something email is invalid 
-      setCurrentStep('invalidEmail');
-      setLoading(false);
-    }
-  }, [decodedEmail])
+  // useEffect(() => { 
+  //   if (!decodedEmail) return;
+  //   if (emailRegEx.test(decodedEmail)) {
+  //     setCurrentStep('1');
+  //     setLoading(false);
+  //   } else {
+  //     // do something email is invalid 
+  //     setCurrentStep('invalidEmail');
+  //     setLoading(false);
+  //   }
+  // }, [decodedEmail])
 
   function nextStep(e, currentStep) {
     e.preventDefault();
     if (currentStep === '1') {
+      setDisableNext(true);
+      if (companyWebsite.trim() && companyName.trim() && decodedEmail.trim()) {
+        setCurrentStep('2');
+      }
+      setDisableNext(false);
+    }
+    if (currentStep === '2') {
       setDisableNext(true);
       if (headcount && headcount !== '101') {
         // calc price and update state
@@ -177,9 +188,11 @@ export default function WhyPage() {
 
     return postData('/api/checkout', {
       tokenId: token.id,
-      email: router.query.email,
+      email: decodedEmail,
       headcount,
       totalCosts,
+      companyWebsite,
+      companyName
     });
   }
 
@@ -211,8 +224,10 @@ export default function WhyPage() {
       })
   }
 
+  const pagination = Array(3).fill('').map((_, i) => <PaginationButton step={i + 1} currentActiveStep={currentStep} prevStep={prevStep} nextStep={nextStep} key={i+'_pagination'} />)
+
   return (
-    <div className="w-full px-1 sm:px-3 md:px-14 xl:px-24 text-runner-white font-base mt-4 mb-6 md:mt-16 md:mb-24">
+    <div className="w-full px-1 sm:px-3 md:px-6 xl:px-24 text-runner-white font-base mt-4 mb-6 md:mt-16 md:mb-24">
       <Head>
         <title>Runner - Last Step</title>
       </Head>
@@ -220,13 +235,111 @@ export default function WhyPage() {
         {
           isLoading ?
           (
-            <p className="text-lg text-runner-white">
+            <p className="text-lg w-full text-center justify-center items-center flex h-[70vh] text-runner-white">
               Loading...
             </p>
           ) :
           (() => { 
               switch(currentStep) {
                 case '1': 
+                  return (
+                    <div className="flex w-full flex-col md:flex-row">
+                      <div className="w-full md:w-[70%] md:pr-[4rem] space-y-6 md:space-y-12 md:mr-[-1px]">
+                        <h1 className="font-base w-full text-[2rem] md:text-[3rem] font-semibold capitalize text-left tracking-[0.03em] leading-[2.1rem] md:leading-[3rem]">
+                          Company Sign-up
+                        </h1>
+
+                        <div className="flex flex-col md:hidden w-full pb-4 md:pb-0">
+                          <div className={`my-2 w-full`}>
+                            <HorizDividerSvg />
+                          </div>
+                          <div className={`flex transition ease-in-out duration-700 items-center flex-grow mt-3`}>
+                            <p className={`text-wrap text-[1rem] lg:text-[1.2625rem] leading-[1.1rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-left`}> 
+                              { !charged ? `Have any questions? Set up call with us before making a purchase.` : `Have any questions? Set up a call.` }
+                              <a target="_blank" rel="noopener noreferrer" href={process.env.NEXT_PUBLIC_CALENDLY_LINK} className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
+                                <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
+                              </a>
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="checkout-inner-container flex items-center px-[1.5rem] py-[4rem] md:px-[3rem] md:py-[4.5rem]">
+                          <div className="flex flex-col space-y-8 w-full">
+                            <div className="space-y-5">
+                              <p className="text-runner-white text-[1.375rem] leading-[1.5rem] tracking-[0.02em] font-medium">
+                                What&apos;s your company&apos;s email address?
+                              </p>
+                              <TextField
+                                className="w-full !border-runner-white !text-runner-white"
+                                type="email"
+                                label="Company Email Address"
+                                placeholder="name@example.com"
+                                value={decodedEmail}
+                                onChange={(e) => {
+                                  setDecodedEmail(e.target.value);
+                                }}
+                              />
+                            </div>
+
+                            <div className="space-y-5">
+                              <p className="text-runner-white text-[1.375rem] leading-[1.5rem] tracking-[0.02em] font-medium">
+                                What&apos;s your company&apos;s name and website (social media account)?
+                              </p>
+                              <div className="w-full space-y-4">
+                                <TextField
+                                  className="w-full !border-runner-white !text-runner-white"
+                                  type="text"
+                                  label="Company name"
+                                  value={companyName}
+                                  onChange={(e) => {
+                                    setCompanyName(e.target.value);
+                                  }}
+                                />
+                                <TextField
+                                  className="w-full !border-runner-white !text-runner-white"
+                                  type="text"
+                                  label="Company Website or Social Media"
+                                  placeholder="https://"
+                                  value={companyWebsite}
+                                  onChange={(e) => {
+                                    setCompanyWebsite(e.target.value);
+                                  }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="w-full flex flex-col md:flex-row justify-between items-center !mb-6 md:mb-0">
+                          <div className="flex py-4 mb-6 md:mb-0">
+                            {
+                              pagination
+                            }
+                          </div>
+                          <Button 
+                            onClick={(e) => nextStep(e, currentStep)}
+                            disabled={disableNext}
+                            className={`${(!disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} md:ml-5 lg:ml-0 md:button-glow transition duration-300 hover:scale-105 active:scale-100 focus:scale-105 !max-w-[20rem] !w-full bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
+                            type="button"
+                          >
+                            Continue
+                          </Button>
+                        </div>
+                      </div>
+                     
+                      <div className={`hidden md:flex transition ease-in-out duration-300 relative h-[100%] w-[0.5px] flex-stretch self-center`}>
+                        <DividerSvg width="0.5px" height="100%" />
+                      </div>
+                      <div className={`hidden md:flex transition ease-in-out duration-700 items-center ml-[-1px] w-[29%] flex-grow pl-[4rem]`}>
+                        <p className="text-wrap sm:h-[4rem] lg:h-[5rem] text-[1rem] lg:text-[1.2625rem] leading-[1.2rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-right"> 
+                          Have any questions? Set up a call.
+                          <a target="_blank" rel="noopener noreferrer" href={process.env.NEXT_PUBLIC_CALENDLY_LINK} className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
+                            <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
+                          </a>
+                        </p>
+                      </div>
+                    </div>
+                  )
+                case '2': 
                   return (
                     <div className="flex w-full flex-col md:flex-row">
                       <div className="w-full md:w-[70%] md:pr-[4rem] space-y-6 md:space-y-12 md:mr-[-1px]">
@@ -241,7 +354,7 @@ export default function WhyPage() {
                           <div className={`${headcount !== '101' ? 'opacity-0 h-0' : 'opacity-[1] h-auto'} flex transition ease-in-out duration-700 items-center flex-grow`}>
                             <p className={`${headcount !== '101' ? 'h-0' : 'h-auto'} text-wrap text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-left`}> 
                               More than 100 current employees?
-                              <a className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
+                              <a target="_blank" rel="noopener noreferrer" href={process.env.NEXT_PUBLIC_CALENDLY_LINK} className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
                                 <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
                               </a>
                             </p>
@@ -289,7 +402,7 @@ export default function WhyPage() {
                         <div className="w-full flex flex-col md:flex-row justify-between items-center !mb-6 md:mb-0">
                           <div className="flex py-4 mb-6 md:mb-0">
                             {
-                              Array(2).fill('').map((_, i) => <PaginationButton step={i + 1} currentActiveStep={currentStep} prevStep={prevStep} nextStep={nextStep} key={i+'_pagination'} />)
+                              pagination
                             }
                           </div>
                           <Button 
@@ -308,23 +421,31 @@ export default function WhyPage() {
                       <div className={`${headcount !== '101' ? 'opacity-0' : 'opacity-[1]'} hidden md:flex transition ease-in-out duration-700 items-center ml-[-0.5px] max-w-[30%] flex-grow pl-[4rem]`}>
                         <p className="text-wrap sm:h-[4rem] lg:h-[5rem] text-[1rem] lg:text-[1.2625rem] leading-[1.2rem] lg:leading-[1.2625rem] font-base font-extralight tracking-[0.03em] text-runner-white text-right"> 
                           More than 100 current employees?
-                          <a className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
+                          <a target="_blank" rel="noopener noreferrer" href={process.env.NEXT_PUBLIC_CALENDLY_LINK} className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
                             <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
                           </a>
                         </p>
                       </div>
                     </div>
                   )
-                case '2':
+                case '3':
                   return (
                     <div className="flex flex-col md:flex-row w-full text-white-runner">
                       <div className="w-full md:w-[70%] pr-0 md:pr-[4rem] space-y-3 md:space-y-[3rem] md:mr-[-1px] text-white-runner">
                         <h1 className="text-[2.5rem] md:text-[3rem] text-runner-white font-base w-full font-bold capitalize text-left leading-[2.5rem] md:leading-[3rem]">
                           { !charged ? 'Membership Checkout' : 'Thank you for trying Runner!'}
                         </h1>
-                        <h4 className="text-runner-white !mt-[0.75rem] w-full text-[1rem] md:text-[1.3rem] font-light text-left tracking-[0.03em] leading-[1.15rem] md:leading-[1.4rem] text-opacity-[0.75]">
+                        <h4 className="text-runner-white !mt-[0.75rem] w-full text-[1rem] md:text-[1.3rem] font-light text-left tracking-[0.03em] leading-[1.2rem] md:leading-[1.7rem] text-opacity-[0.8]">
                           { !charged ? 
-                            `Runner’s membership cost $200 per current employee per year with a $600 minimum.`
+                            (
+                              <>
+                              Service cost per year = $200 per current employee*
+                              <br/>
+                              Unlimited matches for operating talent (EAs, COOs, HR/People Ops, etc)
+                              <br/>
+                              <span className="font-medium">*No hidden fees, no booking fees, no recruiting fees!</span>
+                              </>
+                            )
                             : `You’re set for a year of Runner. This covers unlimited matching and booking, with no recruitment fees (an average savings of at least $10,000/year). You'll receive an email from us soon.`
                           }
                         </h4>
@@ -337,7 +458,7 @@ export default function WhyPage() {
                           <div className={`flex transition ease-in-out duration-700 items-center flex-grow mt-3`}>
                             <p className={`text-wrap text-[1rem] lg:text-[1.2625rem] leading-[1.1rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-left`}> 
                               { !charged ? `Have any questions? Set up call with us before making a purchase.` : `Have any questions? Set up a call.` }
-                              <a className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
+                              <a target="_blank" rel="noopener noreferrer" href={process.env.NEXT_PUBLIC_CALENDLY_LINK} className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
                                 <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
                               </a>
                             </p>
@@ -349,7 +470,7 @@ export default function WhyPage() {
                             <p className="text-runner-white text-[1.075rem] leading-[0.75rem] tracking-[0.02em] font-medium text-opacity-[0.8]">
                               Payment Summary
                             </p>
-                            <div className="flex items-center justify-between rounded-[0.875rem] px-[0.5rem] lg:p-[2.21875rem] w-full bg-opacity-[0.2]">
+                            <div className="flex items-center justify-between rounded-[0.875rem] px-[0.5rem] lg:p-[1rem] w-full bg-opacity-[0.2]">
                               <div className="w-[2rem] h-auto">
                                 <PlanetSvg width="100%" />  
                               </div>
@@ -380,9 +501,9 @@ export default function WhyPage() {
                           }
                         </div>
                         
-                        <div className="w-full flex justify-between text-runner-white items-center w-full text-[1.3rem] font-light capitalize text-left tracking-[0.03em] leading-[1.7rem]">
+                        <div className="w-full flex justify-between text-runner-white items-center w-full text-[1.3rem] font-light capitalize text-left tracking-[0.03em] leading-[1.7rem] py-4 !mt-6">
                           <p className="text-runner-white text-opacity-[0.85]">Total Costs:</p>
-                          <p className="font-normal">{totalCostsFormatted }</p>
+                          <p className="font-normal">{ totalCostsFormatted }</p>
                         </div>
 
                         {
@@ -390,14 +511,14 @@ export default function WhyPage() {
                           <div className="w-full flex flex-col md:flex-row justify-between items-center !mb-6 md:mb-0">
                             <div className="flex py-4 mb-6 md:mb-0">
                               {
-                                Array(2).fill('').map((_, i) => <PaginationButton step={i + 1} currentActiveStep={currentStep} prevStep={prevStep} nextStep={nextStep} key={i+'_pagination'} />)
+                                pagination
                               }
                             </div>
                             <Button 
                               onClick={(e) => checkout(e)}
                               tabIndex="0"
                               disabled={headcount === '101' || disableNext}
-                              className={`${(headcount !== '101' || !disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} md:ml-5 md:button-glow transition duration-300 hover:scale-105 active:scale-100 focus:scale-105 !max-w-[20rem] !w-full md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
+                              className={`${(headcount !== '101' || !disableNext ) ? 'opacity-1' : 'opacity-[0.1]'} md:ml-5 md:button-glow transition duration-300 hover:scale-105 active:scale-100 focus:scale-105 !max-w-[20rem] !w-full bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase !rounded-full !text-runner-white`}
                               type="button"
                             >
                               Proceed to pay
@@ -412,7 +533,7 @@ export default function WhyPage() {
                       <div className={`hidden md:flex transition ease-in-out duration-700 items-center ml-[-1px] w-[29%] flex-grow pl-[4rem]`}>
                         <p className="text-wrap sm:h-[4rem] lg:h-[5rem] text-[1rem] lg:text-[1.2625rem] leading-[1.2rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-right"> 
                           { !charged ? `Have any questions? Set up call with us before making a purchase.` : `Have any questions? Set up a call.` }
-                          <a href={process.env.NEXT_PUBLIC_CALENDLY_LINK} className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
+                          <a target="_blank" rel="noopener noreferrer" href={process.env.NEXT_PUBLIC_CALENDLY_LINK} className="cursor-pointer block text-runner-white text-[0.9rem] tracking-[0.05em] font-semibold pb-[0.2rem] mt-2">
                             <span className="border-runner-purple border-b-[0.18rem] py-[0.4rem]">Reach out</span>
                           </a>
                         </p>

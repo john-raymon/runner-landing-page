@@ -9,7 +9,7 @@ const handler = nc({
 
 export default handler
   .post(async (req, res, next) => {
-    const { headcount, email, tokenId } = req.body;
+    const { headcount, email, tokenId, companyWebsite, companyName } = req.body;
 
     if (+headcount > 100 || +headcount < 1) {
       return next('BadRequest');
@@ -23,10 +23,13 @@ export default handler
       source: tokenId,
       description: 'Runner Beta Company Membership payment',
       statement_descriptor: 'Runner Beta Payment',
+      receipt_email: email,
       metadata: {
         email,
         head_count: headcount,
         total_costs: totalCosts,
+        company_website: companyWebsite,
+        company_name: companyName,
         starting_date: Date(),
       },
     }).then((stripeChargeResponse) => {

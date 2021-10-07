@@ -4,6 +4,7 @@ import DividerSvg from './../public/divider.svg';
 import HorizDividerSvg from './../public/horiz-divider.svg';
 import RunnerIconSvg from './../public/runner-icon.svg';
 import { Button } from 'lite-react-ui';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -24,17 +25,17 @@ export default function Home() {
           </div>
         </section>
         <section className="flex-grow my-8 md:mt-2 md:mb-0">
-          <div className="flex flex-col md:flex-row w-full md:mx-px py-10 space-y-10 md:space-y-0">
+          <div className="flex flex-col md:flex-row w-full md:mx-px pt-6 pb-10 space-y-10 md:space-y-0">
             <div className="w-full md:w-1/2 self-center md:-mx-px">
               <div className="px-2 md:px-6 xl:px-24 space-y-5">
                 <p className="sm:h-[4rem] lg:h-[5rem] text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-center md:text-left pb-4 sm:pb-2"> 
                   We help you add the people your team needs fractionally, when they&apos;re needed.
                 </p>
-                <a href={process.env.NEXT_PUBLIC_COMPANY_TYPEFORM_URL}>
+                <Link href="/company-on-board">
                   <Button className="md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
                     Reserve
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="mx-1 hidden w-px md:block">
