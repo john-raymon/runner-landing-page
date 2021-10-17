@@ -456,7 +456,7 @@ export default function WhyPage() {
                           { !charged ? 
                             (
                               <>
-                              Service cost per year = $200 per current employee*
+                              Service cost per year = $200 per current employee<strong>*</strong> ($600 minimum)
                               <br/>
                               Unlimited matches for operating talent (EAs, COOs, HR/People Ops, etc)
                               <br/>
