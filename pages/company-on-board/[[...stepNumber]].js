@@ -29,7 +29,7 @@ function PaginationButton({step, currentActiveStep, prevStep, nextStep}) {
     <button 
       disabled={!isNextStep && !isPrevStep && !isActive} 
       onClick={(e) => (isActive ? null : isNextStep ? nextStep(e, currentActiveStep) : (isPrevStep ? prevStep(e, currentActiveStep) : null) )} 
-      className={`w-[0.7rem] h-[0.7rem] mx-6 cursor-pointer disabled:opacity-[0.20] ${isActive ? 'transform scale-[1.75]' : ''}`}>
+      className={`outline-none active:outline-none active:opacity-[0.5] hover:opacity-[0.75] focus:outline-none w-[0.7rem] h-[0.7rem] mx-6 cursor-pointer disabled:opacity-[0.20] ${isActive ? 'transform scale-[1.75]' : ''}`}>
       {
         isActive ?
         <GradientCircleSvg height="0.7rem" width="0.7rem" />
@@ -82,7 +82,6 @@ export default function WhyPage() {
           color: '#FCEFED',
           fontWeight: '300',
           fontSize: '16px',
-          letterSpacing: '0.01em',
           '::placeholder': {
             color: '#FCEFED'
           },
@@ -391,7 +390,7 @@ export default function WhyPage() {
                               type="button"
                               onFocus={() => { selectInputRef.current.focus(); setSelectWrapperFocus(true); }} 
                               onClick={() => { selectInputRef.current.focus(); setSelectWrapperFocus(true); }} 
-                              className={`${selectWrapperFocus ? 'md:scale-105 border-opacity-[0.2] border-runner-white' : 'md:scale-100 border-opacity-[0] border-transparent'} border-[0.1rem] transform transition md:duration-300 ease-in-out md:hover:scale-105 base-select relative flex items-center justify-between rounded-[1.5rem] bg-[#372E40] bg-opacity-[0.6] px-[2.5rem] py-[1.875rem] w-full cursor-pointer`}
+                              className={`${selectWrapperFocus ? 'md:scale-105 border-opacity-[0.2] border-runner-white' : 'md:scale-100 border-opacity-[0] border-transparent'} border-[0.1rem] transform transition md:duration-300 ease-in-out md:hover:scale-105 base-select relative flex items-center justify-between rounded-[1.5rem] bg-[#372E40] bg-opacity-[0.6] px-[0.75rem] md:px-[2.5rem] py-[1.4rem] md:py-[1.875rem] w-full cursor-pointer`}
                             >
                               <p className="text-left text-[1rem] text-runner-white text-opacity-[0.70] tracking-[0.06rem] font-light leading-[1rem] pr-1">
                                 { headcounts[headcount] || 'Select a number of employees' }
@@ -482,34 +481,34 @@ export default function WhyPage() {
                           </div>
                         </div>
 
-                        <div className="checkout-inner-container checkout-inner-container--multicolor-border flex flex-col items-center px-[1.5rem] sm:px-[1rem] py-[4rem] md:px-[3rem] md:py-[4rem]">
-                          <div className="flex flex-col space-y-8 w-full">
+                        <div className="checkout-inner-container checkout-inner-container--multicolor-border flex flex-col items-center px-[0.75rem] sm:px-[1rem] py-[3rem] md:px-[3rem] md:py-[4rem]">
+                          <div className="flex flex-col space-y-4 w-full">
                             <p className="text-runner-white text-[1.075rem] leading-[0.75rem] tracking-[0.02em] font-medium text-opacity-[0.8]">
                               Payment Summary
                             </p>
-                            <div className="flex items-center justify-between rounded-[0.875rem] px-[0.5rem] lg:p-[1rem] w-full bg-opacity-[0.2]">
-                              <div className="w-[2rem] h-auto">
-                                <PlanetSvg width="100%" />  
-                              </div>
-                              <div className="flex font-light items-center space-x-[0.2rem] justify-between w-full pl-[0.5rem] lg:pl-[1.59375rem] text-[0.8rem] lg:text-[1.125rem] lg:tracking-[0.02em] leading-[0.8rem] lg:leading-[1rem] text-opacity-[0.9]">
+                            <div className="flex font-light flex-col md:flex-row md:items-center space-y-[0.5rem] md:space-y-[0rem] md:space-x-[0.2rem] md:justify-between w-full text-[0.8rem] lg:text-[1.125rem] lg:tracking-[0.02em] leading-[0.8rem] lg:leading-[1rem] text-opacity-[0.9]">
+                              <div className="flex items-center">
+                                <div className="w-[1rem] h-auto mr-[0.5rem]">
+                                  <PlanetSvg width="100%" />  
+                                </div>
                                 <p>
                                   {headcounts[headcount]}
                                 </p>
-                                <p className="text-right">
-                                  {totalCostsFormatted} USD / per year
-                                </p>
                               </div>
+                              <p className="md:text-right">
+                                {totalCostsFormatted} USD / per year
+                              </p>
                             </div>
                           </div>
                           
                           {
                             !charged ?
-                            <div className="flex flex-col space-y-8 w-full mt-[3rem]">
+                            <div className="flex flex-col space-y-4 w-full mt-[2rem] md:mt-[3rem]">
                               <p className="text-runner-white text-[1.075rem] leading-[0.75rem] tracking-[0.02em] font-medium text-opacity-[0.8]">
                                 Payment Method
                               </p>
                               <div className="w-full">
-                                <div className="rounded-[0.875rem] bg-[#372E40] bg-opacity-[0.6] leading-[1rem] text-[16px] py-[1rem] px-[0.45rem] md:p-[2.21875rem]">
+                                <div className="rounded-[1.5rem] bg-[#372E40] bg-opacity-[0.6] py-[1.6rem] px-[0.3rem] sm:px-[0.75rem] md:py-[rem] md:p-[2rem]">
                                   <div id="card-element"></div>
                                 </div>
                               </div>
