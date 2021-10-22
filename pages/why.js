@@ -13,6 +13,9 @@ export default function WhyPage() {
         <div className="w-full flex flex-col md:flex-row px-0 md:px-10 lg:px-20 items-center md:items-start">
           <div className="order-last flex mx-auto flex-col w-full md:w-[40%] lg:w-[35%] max-w-[34.375rem] md:max-w-full max-h-[full] z-10">
               <div className="w-full mx-auto md:mt-[-10px]">
+                <blockquote className="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">I&#39;ve seen other beta folks tweet excitedly after meeting talent <a href="https://twitter.com/hirerunner?ref_src=twsrc%5Etfw">@hirerunner</a> matched them with but I have to hand it to <a href="https://twitter.com/ArlanWasHere?ref_src=twsrc%5Etfw">@ArlanWasHere</a> &amp; the team<br/><br/>Y&#39;all made a match for me with talent w/skills I&#39;ve DREAMT about finding SOMEDAY. <br/><br/>That she can start ASAP is 🤯. I&#39;m speechless.</p>&mdash; Sara Lobkovich, J.D. (@saralobkovich) <a href="https://twitter.com/saralobkovich/status/1451299022350610432?ref_src=twsrc%5Etfw">October 21, 2021</a></blockquote>
+              </div>
+              <div>
                 <blockquote className="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">Building in public is such a cool thing to witness. Check out this episode of Your First Million with <a href="https://twitter.com/ArlanWasHere?ref_src=twsrc%5Etfw">@ArlanWasHere</a> about the first month of <a href="https://twitter.com/hirerunner?ref_src=twsrc%5Etfw">@hirerunner</a> . She is doing big things here. <a href="https://t.co/cg6TPOReC3">https://t.co/cg6TPOReC3</a></p>&mdash; Karen Hebert-Maccaro ☕️ (@eduversequeen) <a href="https://twitter.com/eduversequeen/status/1449414258857586692?ref_src=twsrc%5Etfw">October 16, 2021</a></blockquote>
               </div>
               <div>
