@@ -23,12 +23,22 @@ function MyApp({ Component, pageProps }) {
               <RunnerSvg className="fill-current text-runner-white"/>
             </a>
           </Link>
-
-          <Link href="/why">
-            <a className="text-runner-white text-sm tracking-[0.1em] text-[0.7rem] font-bold pb-[0.3rem]">
-              <span className="border-runner-purple border-b-[0.1rem] py-[0.3rem]">Why?</span>
-            </a>
-          </Link>
+          <ul className="flex space-x-4">
+            <li>
+              <Link href="/why">
+                <a className="text-runner-white text-sm tracking-[0.1em] text-[0.7rem] font-bold pb-[0.3rem]">
+                  <span className="border-runner-purple border-b-[0.1rem] py-[0.3rem]">Why?</span>
+                </a>
+            </Link>
+            </li>
+            <li>
+              <Link href="/tour-dates">
+                <a className="text-runner-white text-sm tracking-[0.1em] text-[0.7rem] font-bold pb-[0.3rem]">
+                  <span className="border-runner-purple border-b-[0.1rem] py-[0.3rem]">Tour Dates</span>
+                </a>
+              </Link>
+            </li>
+          </ul>
         </div>
       </header>
       <div className="font-base relative min-h-screen lg:max-w-[77.87rem] w-full mx-auto justify-center px-4 sm:px-8 xl:px-0">
@@ -36,7 +46,7 @@ function MyApp({ Component, pageProps }) {
         <main className="w-full">
           <Component {...pageProps} />
         </main>
-        <footer className="flex flex-col items-center justify-center flex-grow mt-8 mb-14">
+        <footer className="relative z-10 flex flex-col items-center justify-center flex-grow mt-8 mb-14">
           <p className="font-base text-[0.7rem] py-1 text-runner-white tracking-wider opacity-75">
             This landing page was built by a Runner :)
           </p>
