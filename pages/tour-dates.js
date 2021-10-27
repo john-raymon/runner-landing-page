@@ -54,7 +54,7 @@ export default function TourDates() {
       hostName: 'Ryan Wilson',
       location: 'Gathering Spot',
       hostLink: 'https://thegatheringspot.club/ryan-wilson/',
-      locationLink: 'https://thegatheringspot.club/',
+      locationLink: 'https://thegatheringspot.club/arlan-hamilton-rsvp/',
     },
     {
       imagePath: '/amy.jpeg',
