@@ -5,10 +5,10 @@ module.exports = {
     './pages/**/*.js',
   ],
   theme: {
-    fontFamily: {
-      base: 'Archivo',
-    },
     extend: {
+      fontFamily: {
+        base: 'Archivo',
+      },
       colors: {
         'runner-white': '#FCEFED',
         'runner-purple': '#6173F4',

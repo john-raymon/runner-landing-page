@@ -23,17 +23,17 @@ function MyApp({ Component, pageProps }) {
               <RunnerSvg className="fill-current text-runner-white"/>
             </a>
           </Link>
-          <ul className="flex space-x-4">
-            <li>
+          <ul className="flex space-x-4 items-center justify-center">
+            <li className="flex items-center">
               <Link href="/why">
-                <a className="text-runner-white text-sm tracking-[0.1em] text-[0.7rem] font-bold pb-[0.3rem]">
+                <a className="text-runner-white text-[0.50rem] tracking-[0.1em] md:text-[0.7rem] font-bold pb-[0.3rem]">
                   <span className="border-runner-purple border-b-[0.1rem] py-[0.3rem]">Why?</span>
                 </a>
             </Link>
             </li>
-            <li>
+            <li className="flex items-center">
               <Link href="/tour-dates">
-                <a className="text-runner-white text-sm tracking-[0.1em] text-[0.7rem] font-bold pb-[0.3rem]">
+                <a className="text-runner-white text-[0.50rem] tracking-[0.1em] md:text-[0.7rem] font-bold pb-[0.3rem]">
                   <span className="border-runner-purple border-b-[0.1rem] py-[0.3rem]">Tour Dates</span>
                 </a>
               </Link>

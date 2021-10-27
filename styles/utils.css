@@ -67,5 +67,5 @@
 }
 
 .button-purple-underline {
-  @apply border-runner-purple border-b-[0.1rem] py-[0.3rem];
+  @apply border-runner-purple border-b-[0.1rem] py-[0.05rem] md:py-[0.3rem] leading-[1.3rem] md:leading-normal;
 }

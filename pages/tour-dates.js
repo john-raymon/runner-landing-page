@@ -7,17 +7,17 @@ function EventListItem({ imagePath, date, city, hostName, location, hostLink = '
     <div className="w-full">
       <div className="flex flex-row justify-between items-center w-full">
         <div>
-          <div className="md:w-[5.75rem] md:h-[5.75rem] sm:w-12 sm:h-12 rounded-full overflow-hidden mr-3">
+          <div className="w-14 h-14 md:w-[5.75rem] md:h-[5.75rem] sm:w-12 sm:h-12 rounded-full overflow-hidden mr-1 md:mr-3">
             <img src={imagePath} className="object-cover" />
           </div>
         </div>
 
-        <p className="flex-shrink-0 text-right text-2xl pl-[6rem]">
+        <div className="text-right text-xs md:text-2xl pl-[0.75rem] md:pl-[6rem]">
           <span className="block text-runner-orange font-medium opacity-95 leading-tight">{date}</span>
           <span className="block font-light opacity-[0.9] leading-tight">
             {city}, hosted by <a target="_blank" rel="noopener noreferrer" href={hostLink}><span className="font-medium button-purple-underline">{hostName}</span></a> at <a target="_blank" rel="noopener noreferrer" href={locationLink}><span className="font-medium button-purple-underline">{location}</span></a>
           </span>
-        </p>
+        </div>
       </div>
       <div className="block mt-6 opacity-[0.60] w-full">
         <HorizDividerSvg />
@@ -74,37 +74,47 @@ export default function TourDates() {
       </Head>
       <main className="relative w-full w-full pt-10 pb-[5rem]">
         <div className="w-full">
-          <h1 className="font-semibold text-[7.5rem] text-runner-white leading-[6.25rem] text-center">
+          <h1 className="font-semibold text-[3.5rem] md:text-[7.5rem] text-runner-white leading-[3rem] md:leading-[6.25rem] text-center">
             Fireside +
             <br/>
-            Meet <span className="font-arial">&</span> Greet
+            Meet <span className="font-sans">&</span> Greet
             <br/>
             Tour
           </h1>
           <div className="flex -mb-6">
-            <div className="relative flex items-center flex-row justify-between colorful-button-bar rounded-full mx-auto mt-4 z-10 p-2">
-              <p className="text-runner-black text-sm font-semibold tracking-[0.02em] px-4">
+            <div className="visible md:invisible md:absolute relative flex items-center flex-col justify-between rounded-full mx-auto mt-2 z-10">
+              <p className="text-runner-white text-center text-xs font-semibold opacity-[0.8] tracking-[0.02em] px-4 mb-2">
                 There are no tickets for these events, but there is a guest list.
               </p>
               <a target="_blank" rel="noopener noreferrer" href={process.env.NEXT_PUBLIC_GUEST_LIST_LINK}>
-                <Button buttonType="secondary" className="!w-auto bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
+                <Button buttonType="secondary" className="bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
+                  Join the guest list
+                </Button>
+              </a>
+            </div>
+            <div className="invisible md:visible absolute md:relative flex items-center flex-row justify-between colorful-button-bar rounded-full mx-auto mt-4 z-10 p-2">
+              <p className="text-runner-black text-xs lg:text-sm font-semibold tracking-[0.02em] px-4">
+                There are no tickets for these events, but there is a guest list.
+              </p>
+              <a target="_blank" rel="noopener noreferrer" href={process.env.NEXT_PUBLIC_GUEST_LIST_LINK}>
+                <Button buttonType="secondary" className="!w-auto bg-gradient-orange font-base !font-medium !border-none text-xs lg:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
                   Join the guest list
                 </Button>
               </a>
             </div>
           </div>
-          <div className="relative w-[31.75rem] mx-auto z-0 -mb-32">
+          <div className="relative w-[90%] md:w-full md:max-w-[31.75rem] mx-auto z-0 -mb-32">
             <img src="/runner-3d-artwork.png" width="100%" height="auto" />
           </div>
           <div className="relative flex flex-col w-full z-10">
             <div className="background-shadow">
             </div>
-            <p className="relative z-10 mx-auto text-runner-white text-center font-light text-base leading-[1.0625rem] tracking-[0.03em]">
-              Each event is from 7pm to 9pm local time.
+            <p className="relative z-10 mx-auto text-runner-white text-center font-light text-xs md:text-base leading-[1rem] md:leading-[1.0625rem] tracking-[0.03em]">
+              <span className="font-medium">Each event is from 7pm to 9pm local time.</span>
               <br/>
               Please show ID at door. There are limited capacities due to Covid safety regulations.
               <br/>
-              Proof of vaccination will be required to attend.
+              <span className="font-medium">Proof of vaccination will be required to attend.</span>
             </p>
             <div className="w-auto mx-auto">
               <h2 className="font-semibold self-start text-2xl text-runner-white my-8">Dates</h2>
@@ -129,16 +139,16 @@ export default function TourDates() {
                 <li>
                   <div className="flex flex-row justify-between items-center w-full opacity-[0.60]">
                     <div>
-                      <div className="md:w-[5.75rem] md:h-[5.75rem] sm:w-12 sm:h-12 rounded-full overflow-hidden mr-3 bg-runner-dark-purple">
+                      <div className="w-14 h-14 md:w-[5.75rem] md:h-[5.75rem] opacity-[0.5] sm:w-12 sm:h-12 rounded-full overflow-hidden mr-1 md:mr-3 bg-runner-dark-purple">
                       
                       </div>
                     </div>
 
-                    <p className="flex-shrink-0 text-right text-2xl pl-[6rem]">
-                      <span className="block font-light opacity-[0.9] leading-tight">
+                    <div className="text-right text-xs md:text-2xl pl-[0.5rem] md:pl-[6rem]">
+                      <p className="font-light opacity-[0.9] leading-tight">
                         Los Angeles, date and location in November to be announced
-                      </span>
-                    </p>
+                      </p>
+                    </div>
                   </div>
                 </li>
               </ul>
