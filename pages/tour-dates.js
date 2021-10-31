@@ -136,21 +136,6 @@ export default function TourDates() {
                     )
                   })
                 }
-                <li>
-                  <div className="flex flex-row justify-between items-center w-full opacity-[0.60]">
-                    <div>
-                      <div className="w-14 h-14 md:w-[5.75rem] md:h-[5.75rem] opacity-[0.5] sm:w-12 sm:h-12 rounded-full overflow-hidden mr-1 md:mr-3 bg-runner-dark-purple">
-                      
-                      </div>
-                    </div>
-
-                    <div className="text-right text-xs md:text-2xl pl-[0.5rem] md:pl-[6rem]">
-                      <p className="font-light opacity-[0.9] leading-tight">
-                        Los Angeles, date and location in November to be announced
-                      </p>
-                    </div>
-                  </div>
-                </li>
               </ul>
             </div>
           </div>
