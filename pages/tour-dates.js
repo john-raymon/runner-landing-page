@@ -36,7 +36,7 @@ export default function TourDates() {
       hostName: 'Aniyia Williams',
       location: 'Canopy',
       hostLink: 'https://www.aniyiawilliams.com/',
-      locationLink: 'https://www.canopy.space/',
+      locationLink: 'https://www.canopy.space/locations/jackson-square/',
     },
     {
       imagePath: '/henry.jpeg',
@@ -45,7 +45,7 @@ export default function TourDates() {
       hostName: 'John Henry',
       location: 'Capital Factory',
       hostLink: 'https://johnhenry-matos.squarespace.com/',
-      locationLink: 'https://www.capitalfactory.com/',
+      locationLink: 'https://www.capitalfactory.com/event/meet-greet-arlan-hamilton/',
     },
     {
       imagePath: '/wilson.jpeg',
