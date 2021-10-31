@@ -84,7 +84,7 @@ export default function TourDates() {
           <div className="flex -mb-6">
             <div className="visible md:invisible md:absolute relative flex items-center flex-col justify-between rounded-full mx-auto mt-2 z-10">
               <p className="text-runner-white text-center text-xs font-semibold opacity-[0.8] tracking-[0.02em] px-4 mb-2">
-                There are no tickets for these events, but there is a guest list.
+                Please click below to sign up for the guest list.
               </p>
               <a target="_blank" rel="noopener noreferrer" href={process.env.NEXT_PUBLIC_GUEST_LIST_LINK}>
                 <Button buttonType="secondary" className="bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
@@ -94,7 +94,7 @@ export default function TourDates() {
             </div>
             <div className="invisible md:visible absolute md:relative flex items-center flex-row justify-between colorful-button-bar rounded-full mx-auto mt-4 z-10 p-2">
               <p className="text-runner-black text-xs lg:text-sm font-semibold tracking-[0.02em] px-4">
-                There are no tickets for these events, but there is a guest list.
+                Please click the button to sign up for the guest list.
               </p>
               <a target="_blank" rel="noopener noreferrer" href={process.env.NEXT_PUBLIC_GUEST_LIST_LINK}>
                 <Button buttonType="secondary" className="!w-auto bg-gradient-orange font-base !font-medium !border-none text-xs lg:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
@@ -104,7 +104,7 @@ export default function TourDates() {
             </div>
           </div>
           <div className="relative w-[90%] md:w-full md:max-w-[31.75rem] mx-auto z-0 -mb-32">
-            <img src="/runner-3d-artwork.png" width="100%" height="auto" />
+            <img src="/arlan-image.png" width="100%" height="auto" />
           </div>
           <div className="relative flex flex-col w-full z-10">
             <div className="background-shadow">
