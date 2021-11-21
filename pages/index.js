@@ -31,11 +31,11 @@ export default function Home() {
                 <p className="sm:h-[4rem] lg:h-[5rem] text-[1.4rem] md:text-[1rem] lg:text-[1.2625rem] leading-[1.5rem] lg:leading-[1.4rem] font-base font-extralight tracking-[0.03em] text-runner-white text-center md:text-left pb-4 sm:pb-2"> 
                   We help you add the people your team needs fractionally, when they&apos;re needed.
                 </p>
-                <Link href="/company-on-board">
-                  <Button className="md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
-                    Hire Runner
+                <a href={process.env.NEXT_PUBLIC_WAITING_LIST_LINK}>
+                  <Button className="md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.5rem] lg:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
+                    Join the customer waitlist!
                   </Button>
-                </Link>
+                </a>
               </div>
             </div>
             <div className="mx-1 hidden w-px md:block">
@@ -52,7 +52,7 @@ export default function Home() {
                   We got you.
                 </p>
                 <a href={process.env.NEXT_PUBLIC_RUNNER_TYPEFORM_URL}>
-                  <Button className="md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
+                  <Button className="md:mt-4 bg-gradient-orange font-base !font-medium !border-none text-[0.5rem] lg:text-[0.8rem] !tracking-[0.2rem] lg:!tracking-[0.26rem] uppercase w-full !rounded-full !text-runner-white">
                     Apply
                   </Button>
                 </a>
